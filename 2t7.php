@@ -1,1 +1,0 @@
-//Program to calculate the roots of a quadratic equation.
