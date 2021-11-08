@@ -30,7 +30,7 @@ $row=mysqli_fetch_assoc($result);
   </div>
    <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="text" name="text" value="<?php echo $row['password']; ?>" class="form-control" id="exampleInputPassword1">
+    <input type="text" name="password" value="<?php echo $row['password']; ?>" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>

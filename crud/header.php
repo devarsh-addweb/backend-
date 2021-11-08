@@ -63,8 +63,19 @@ if(!$_SESSION['email'])
 </head>
 
 <body>
+    <?php 
+$qq=$_SESSION['email'];
+  $q="SELECT fullname FROM student WHERE email='$qq'";
+  $result=mysqli_query($conn,$q);
+  $row=mysqli_fetch_assoc($result);
+  $name=$row['fullname'];
+echo "<br>";
 
-    <ul class="nav justify-content-center" style="background-color: lightblue;">
+?>
+    <ul class="nav justify-content-center" style="background-color: whitesmoke;">
+  <li class="nav-item">
+    <p class="" aria-current="page" style='margin-left:-650px;font-size:22px; color:black; text-decoration: none'><?php echo "Hello ".strtoupper($name); ?></p>
+  </li>
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="home.php">Home</a>
   </li>
@@ -74,7 +85,10 @@ if(!$_SESSION['email'])
   <li class="nav-item">
     <a class="nav-link" href="data.php" tabindex="-1" aria-disabled="true">User Data</a>
   </li>
-  <li class="nav-item">
-    <a href="logout.php" class="link-danger" style="font-size: 25px; margin-left: 1000px;">Log out</a>
-  </li>
-</ul>   
+  <!-- <li class="nav-item" >
+    <a href="logout.php" class="link-danger" style="font-size: 25px; margin-left: 100px; ">Log out</a>
+  </li> -->
+</ul>
+<div style="margin-top: -50px;">  
+    <a href="logout.php" class="link-danger" style="font-size: 25px; margin-left: 85%;margin-bottom:-70px; ">Log out</a> 
+</div>

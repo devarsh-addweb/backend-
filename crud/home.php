@@ -9,16 +9,16 @@ if(!$_SESSION['email'])
 ?>
 
 <?php 
-$qq=$_SESSION['email'];
-  $q="SELECT fullname FROM student WHERE email='$qq'";
-  $result=mysqli_query($conn,$q);
-  $row=mysqli_fetch_assoc($result);
-  $name=$row['fullname'];
-echo "<br>";
-echo "<p style='margin-left:20px;font-size:25px; color:grey;'>hello ".$name;
+// $qq=$_SESSION['email'];
+//   $q="SELECT fullname FROM student WHERE email='$qq'";
+//   $result=mysqli_query($conn,$q);
+//   $row=mysqli_fetch_assoc($result);
+//   $name=$row['fullname'];
+// echo "<br>";
+// echo "<p style='margin-left:20px;font-size:25px; color:grey;'>hello ".$name;
 ?>
 <center>
-  <img src="img/rock.png"style="height: 500px;">
+  <img src="img/rock.png"style="height: 500px; margin-top: 50px;">
 </center>
 </body>
 </html>
