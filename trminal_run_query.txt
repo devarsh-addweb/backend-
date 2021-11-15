@@ -1,0 +1,551 @@
+addweb@LP-59:~$ /opt/lampp/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 300
+Server version: 10.4.21-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databse;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databse' at line 1
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addweb             |
+| backbone           |
+| information_schema |
+| male_fashion       |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| practice           |
+| test               |
++--------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [(none)]> create database sqlrun;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addweb             |
+| backbone           |
+| information_schema |
+| male_fashion       |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| practice           |
+| sqlrun             |
+| test               |
++--------------------+
+10 rows in set (0.001 sec)
+
+MariaDB [(none)]> delete database sqlrun;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database sqlrun' at line 1
+MariaDB [(none)]> use sqlrun;
+Database changed
+MariaDB [sqlrun]> craete table stusent (id int primary key auto increment,name varname(50),password varname(50),mobile varchar(50),email varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'craete table stusent (id int primary key auto increment,name varname(50),pass...' at line 1
+MariaDB [sqlrun]> craete table stusent (id int primary key,name varname(50),password varname(50),mobile varchar(50),email varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'craete table stusent (id int primary key,name varname(50),password varname(50...' at line 1
+MariaDB [sqlrun]> create table student (id bigint AUTO_INCREMENT PRIMARY KEY, name varname (50), password varchar(50), mobile varchar(50), email varchar(50)); 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(50), password varchar(50), mobile varchar(50), email varchar(50))' at line 1
+MariaDB [sqlrun]> create table Customer(id bigint,name varchar(50),password varchar(20),city varchar(50),mobile bigint(20),email varchar(20),PRIMARY KEY(id));
+Query OK, 0 rows affected (0.381 sec)
+
+MariaDB [sqlrun]> create table student(id bigint,name varchar(50),password varchar(20),city varchar(50),mobile bigint(20),email varchar(20),PRIMARY KEY(id));
+Query OK, 0 rows affected (0.244 sec)
+
+MariaDB [sqlrun]> insert into values ('devarsh','chauhan','amd','9999000090','d@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'values ('devarsh','chauhan','amd','9999000090','d@gmail.com')' at line 1
+MariaDB [sqlrun]> insert into student  values ('devarsh','chauhan','amd','9999000090','d@gmail.com');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [sqlrun]> insert into student values ('devarsh','chauhan','amd','9999000090','d@gmail.com');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [sqlrun]> insert into student values('devarsh','chauhan','amd',1234567890,'d@gmail.com');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [sqlrun]> INSERT INTO `student`(`id`, `name`, `password`, `city`, `mobile`, `email`) VALUES (1,'dev','chauhan','amd',1234567890,'d@gmail.com');
+Query OK, 1 row affected (0.052 sec)
+
+MariaDB [sqlrun]> INSERT INTO `student`(`id`, `name`, `password`, `city`, `mobile`, `email`) VALUES (2,'niki','chauhan','idar','0987654321','n@gmail.com');
+Query OK, 1 row affected (0.057 sec)
+
+MariaDB [sqlrun]> INSERT INTO student VALUES (3,'yash','gajjar','gandhinagar',32434314,'y@gmail.com');
+Query OK, 1 row affected (0.125 sec)
+
+MariaDB [sqlrun]> select * from student;
++----+------+----------+-------------+------------+-------------+
+| id | name | password | city        | mobile     | email       |
++----+------+----------+-------------+------------+-------------+
+|  1 | dev  | chauhan  | amd         | 1234567890 | d@gmail.com |
+|  2 | niki | chauhan  | idar        |  987654321 | n@gmail.com |
+|  3 | yash | gajjar   | gandhinagar |   32434314 | y@gmail.com |
++----+------+----------+-------------+------------+-------------+
+3 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> INSERT INTO student VALUES ('menil','kothari','motera',32434314,'m@gmail.com');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [sqlrun]> INSERT INTO student VALUES (4,'menil','kothari','motera',32434314,'m@gmail.com');
+Query OK, 1 row affected (0.043 sec)
+
+MariaDB [sqlrun]> INSERT INTO student VALUES (5,'vitrag','desai','sp stedium',97869,'v@gmail.com');
+Query OK, 1 row affected (0.048 sec)
+
+MariaDB [sqlrun]> select * from student
+    ->
+MariaDB [sqlrun]> select city from student where id=5;
++------------+
+| city       |
++------------+
+| sp stedium |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where city='amd' and name='dev';
++----+------+----------+------+------------+-------------+
+| id | name | password | city | mobile     | email       |
++----+------+----------+------+------------+-------------+
+|  1 | dev  | chauhan  | amd  | 1234567890 | d@gmail.com |
++----+------+----------+------+------------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where city='amd' or city='idar';
++----+------+----------+------+------------+-------------+
+| id | name | password | city | mobile     | email       |
++----+------+----------+------+------------+-------------+
+|  1 | dev  | chauhan  | amd  | 1234567890 | d@gmail.com |
+|  2 | niki | chauhan  | idar |  987654321 | n@gmail.com |
++----+------+----------+------+------------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where not city='amd';
++----+--------+----------+-------------+-----------+-------------+
+| id | name   | password | city        | mobile    | email       |
++----+--------+----------+-------------+-----------+-------------+
+|  2 | niki   | chauhan  | idar        | 987654321 | n@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |  32434314 | y@gmail.com |
+|  4 | menil  | kothari  | motera      |  32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |     97869 | v@gmail.com |
++----+--------+----------+-------------+-----------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where name='niki' and (city='idar' or city='motera';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [sqlrun]> select * from student where name='niki' and (city='idar' or city='motera');
++----+------+----------+------+-----------+-------------+
+| id | name | password | city | mobile    | email       |
++----+------+----------+------+-----------+-------------+
+|  2 | niki | chauhan  | idar | 987654321 | n@gmail.com |
++----+------+----------+------+-----------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student order by name;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student order by mobile;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student order by city;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student order by city desc;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student order by city and name;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set, 5 warnings (0.001 sec)
+
+MariaDB [sqlrun]> select * from student order by desc city and name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc city and name' at line 1
+MariaDB [sqlrun]> select * from student order by name asc and city desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and city desc' at line 1
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> select * from student order by name asc , city desc;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> update student set name='yash' where email='y@gmail.com';
+Query OK, 0 rows affected (0.001 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | amd         | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> update student set city='surat' where id=1; 
+Query OK, 1 row affected (0.056 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | surat       | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      97869 | v@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> update student set mobile=12345 where id=5;
+Query OK, 1 row affected (0.059 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+-------------+------------+-------------+
+| id | name   | password | city        | mobile     | email       |
++----+--------+----------+-------------+------------+-------------+
+|  1 | dev    | chauhan  | surat       | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar        |  987654321 | n@gmail.com |
+|  3 | yash   | gajjar   | gandhinagar |   32434314 | y@gmail.com |
+|  4 | menil  | kothari  | motera      |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium  |      12345 | v@gmail.com |
++----+--------+----------+-------------+------------+-------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> delete from student where email=y@gmail.com;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@gmail.com' at line 1
+MariaDB [sqlrun]> delete from student where email='y@gmail.com';
+Query OK, 1 row affected (0.061 sec)
+
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+------------+------------+-------------+
+| id | name   | password | city       | mobile     | email       |
++----+--------+----------+------------+------------+-------------+
+|  1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|  4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++----+--------+----------+------------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> insert into student values (3,'pinkal','patel','amd',7878,''p@gmail.com');
+    '> insert into student values (3,'pinkal','patel','amd',7878,''p@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p@gmail.com');
+insert into student values (3,'pinkal','patel','amd',7878,''p@...' at line 1
+MariaDB [sqlrun]> insert into student values (3,'pinkal','patel','amd',7878,''p@gmail.com');
+insert into student (id,name,password,city,mobile,email) values (3,'pinkal','patel','amd',7878,''p@gmail.com');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'p@gmail.com');
+insert into student (id,name,password,city,mobile,email) value...' at line 1
+MariaDB [sqlrun]> ~INSERT INTO student VALUES (3,'pinkal','patel','amd',97869,'p@gmail.com'); 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '~INSERT INTO student VALUES (3,'pinkal','patel','amd',97869,'p@gmail.com')' at line 1
+MariaDB [sqlrun]> ~INSERT INTO student VALUES (6,'pinkal','patel','amd',97869,'p@gmail.com'); 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '~INSERT INTO student VALUES (6,'pinkal','patel','amd',97869,'p@gmail.com')' at line 1
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+------------+------------+-------------+
+| id | name   | password | city       | mobile     | email       |
++----+--------+----------+------------+------------+-------------+
+|  1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|  4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++----+--------+----------+------------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select top 3 * rom student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '3 * rom student' at line 1
+MariaDB [sqlrun]> select top 3 * from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '3 * from student' at line 1
+MariaDB [sqlrun]> select top 3 * from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '3 * from student' at line 1
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> select * from student limit 3;
++----+-------+----------+--------+------------+-------------+
+| id | name  | password | city   | mobile     | email       |
++----+-------+----------+--------+------------+-------------+
+|  1 | dev   | chauhan  | surat  | 1234567890 | d@gmail.com |
+|  2 | niki  | chauhan  | idar   |  987654321 | n@gmail.com |
+|  4 | menil | kothari  | motera |   32434314 | m@gmail.com |
++----+-------+----------+--------+------------+-------------+
+3 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student fetch first 2 rows only;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fetch first 2 rows only' at line 1
+MariaDB [sqlrun]> select * from student fetch first 20 percent rows only;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fetch first 20 percent rows only' at line 1
+MariaDB [sqlrun]> selct top 3 * from student where city='amd';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selct top 3 * from student where city='amd'' at line 1
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> selct * from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selct * from student' at line 1
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+------------+------------+-------------+
+| id | name   | password | city       | mobile     | email       |
++----+--------+----------+------------+------------+-------------+
+|  1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|  4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++----+--------+----------+------------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select top 3 * from student where city='amd';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '3 * from student where city='amd'' at line 1
+MariaDB [sqlrun]> select top 3 * from student where city='idar';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '3 * from student where city='idar'' at line 1
+MariaDB [sqlrun]> select top 3 * from student where city='idar';
+[2]+  Stopped                 /opt/lampp/bin/mysql -u root -p
+addweb@LP-59:~$ /opt/lampp/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 512
+Server version: 10.4.21-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select * from student;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> select * from student;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use student;
+ERROR 1049 (42000): Unknown database 'student'
+MariaDB [(none)]> use sqlrun;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+------------+------------+-------------+
+| id | name   | password | city       | mobile     | email       |
++----+--------+----------+------------+------------+-------------+
+|  1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|  4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++----+--------+----------+------------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select min(mobile) as smallestmobile from student; 
++----------------+
+| smallestmobile |
++----------------+
+|          12345 |
++----------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select max(mobile) as largestmobile from tudent;
+ERROR 1146 (42S02): Table 'sqlrun.tudent' doesn't exist
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> select max(mobile) as largestmobile from student;
++---------------+
+| largestmobile |
++---------------+
+|    1234567890 |
++---------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select count(id) from student;
++-----------+
+| count(id) |
++-----------+
+|         4 |
++-----------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student;
++----+--------+----------+------------+------------+-------------+
+| id | name   | password | city       | mobile     | email       |
++----+--------+----------+------------+------------+-------------+
+|  1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|  2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|  4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|  5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++----+--------+----------+------------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select avg (mobile) from student;
++----------------+
+| avg (mobile)   |
++----------------+
+| 563667217.5000 |
++----------------+
+1 row in set (0.052 sec)
+
+MariaDB [sqlrun]> select sum (id) from mobile;
+ERROR 1146 (42S02): Table 'sqlrun.mobile' doesn't exist
+MariaDB [sqlrun]> select sum (id) from student;
+ERROR 1558 (HY000): Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100421. Please use mysql_upgrade to fix this error
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> create table product (p-id bigint(10), pro-name varchar(50), cat-id varchar(50),price varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-id bigint(10), pro-name varchar(50), cat-id varchar(50),price varchar(50))' at line 1
+MariaDB [sqlrun]> create table product (p_id bigint(10), cat_id varchar(50), pro_name varchar(50),price varchar(50));
+Query OK, 0 rows affected (0.439 sec)
+
+MariaDB [sqlrun]> select * from product;
+Empty set (0.001 sec)
+
+MariaDB [sqlrun]> insert into product (p_id,cat_id,pro_name,price) values (1,1,'bag',199);
+ERROR 1054 (42S22): Unknown column 'cat_id' in 'field list'
+MariaDB [sqlrun]> insert into product (p_id,s_id,pro_name,price) values (1,1,'bag',199);
+Query OK, 1 row affected (0.043 sec)
+
+MariaDB [sqlrun]> select * from product;
++------+------+----------+-------+
+| p_id | s_id | pro_name | price |
++------+------+----------+-------+
+|    1 | 1    | bag      | 199   |
++------+------+----------+-------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> insert into product (p_id,s_id,pro_name,price) values (null,2,mobile,12000);
+ERROR 1054 (42S22): Unknown column 'mobile' in 'field list'
+MariaDB [sqlrun]> insert into product (p_id,s_id,pro_name,price) values (2,2,mobile,12000);
+ERROR 1054 (42S22): Unknown column 'mobile' in 'field list'
+MariaDB [sqlrun]> insert into product (p_id,s_id,pro_name,price) values (2,'mobile',12000);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [sqlrun]> insert into product (p_id,s_id,pro_name,price) values (2,2,'mobile',12000); 
+Query OK, 1 row affected (0.059 sec)
+
+MariaDB [sqlrun]> select * from product;
++------+------+----------+-------+
+| p_id | s_id | pro_name | price |
++------+------+----------+-------+
+|    1 | 1    | bag      | 199   |
+|    2 | 2    | mobile   | 12000 |
++------+------+----------+-------+
+2 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where name like '%n';
+Empty set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student;
++------+--------+----------+------------+------------+-------------+
+| S_id | name   | password | city       | mobile     | email       |
++------+--------+----------+------------+------------+-------------+
+|    1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|    2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|    4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|    5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++------+--------+----------+------------+------------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where name like 'n%';
++------+------+----------+------+-----------+-------------+
+| S_id | name | password | city | mobile    | email       |
++------+------+----------+------+-----------+-------------+
+|    2 | niki | chauhan  | idar | 987654321 | n@gmail.com |
++------+------+----------+------+-----------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where name like '__k%';
++------+------+----------+------+-----------+-------------+
+| S_id | name | password | city | mobile    | email       |
++------+------+----------+------+-----------+-------------+
+|    2 | niki | chauhan  | idar | 987654321 | n@gmail.com |
++------+------+----------+------+-----------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where city in ('idar','motera');
++------+-------+----------+--------+-----------+-------------+
+| S_id | name  | password | city   | mobile    | email       |
++------+-------+----------+--------+-----------+-------------+
+|    2 | niki  | chauhan  | idar   | 987654321 | n@gmail.com |
+|    4 | menil | kothari  | motera |  32434314 | m@gmail.com |
++------+-------+----------+--------+-----------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select * from student where city in ('idar','motera') and ('niki','menil');
+ERROR 1241 (21000): Operand should contain 1 column(s)
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> 
+MariaDB [sqlrun]> select * from student where city in (select city from idar);
+ERROR 1146 (42S02): Table 'sqlrun.idar' doesn't exist
+MariaDB [sqlrun]> select * from student where city in (select city from product);
++------+--------+----------+------------+------------+-------------+
+| S_id | name   | password | city       | mobile     | email       |
++------+--------+----------+------------+------------+-------------+
+|    1 | dev    | chauhan  | surat      | 1234567890 | d@gmail.com |
+|    2 | niki   | chauhan  | idar       |  987654321 | n@gmail.com |
+|    4 | menil  | kothari  | motera     |   32434314 | m@gmail.com |
+|    5 | vitrag | desai    | sp stedium |      12345 | v@gmail.com |
++------+--------+----------+------------+------------+-------------+
+4 rows in set (0.022 sec)
+
+MariaDB [sqlrun]> select city from student inner join product on student.city=product.price;
+Empty set (0.016 sec)
+
+MariaDB [sqlrun]> select * from product;
++------+------+----------+-------+
+| p_id | s_id | pro_name | price |
++------+------+----------+-------+
+|    1 | 1    | bag      | 199   |
+|    2 | 2    | mobile   | 12000 |
++------+------+----------+-------+
+2 rows in set (0.001 sec)
+
+MariaDB [sqlrun]> select city from student inner join product on student.city=product.pro_name;
+Empty set (0.001 sec)
+
+MariaDB [sqlrun]> 
