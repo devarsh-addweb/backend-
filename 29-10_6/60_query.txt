@@ -1,0 +1,119 @@
+1	select id,department_no,fullname from employee; 
+
+2	select * from employee; 
+
+3	select fullname,job from employee;
+
+4	select fullname,salary from employee;
+
+5	select department_no,fullname,salary as total_salaary from employee;
+
+6	SELECT fullname, 12*(salary+commision) AS “annual_salary” FROM employee;
+
+7	select fullname from employee where department_no=67;
+
+8	select department_no,fullname,job as department_name from employee where job='IT';
+
+9	select fullname, department_no as emplo_name,commision from employee;
+
+10	select fullname,commision from employee where commision<0;
+
+11	select fullname,salary from employee where job = 'clerk' or job = 'salesman' and salary >3000;
+
+12	
+
+13	SELECT fullname FROM employee where curdate()-joining_date>5*365;
+
+14	SELECT curdate() from employee;
+
+15	
+
+16	select fullname from employee;
+
+17	select fullname from employee;
+
+18	select fullname,department_no from employee where department_no BETWEEN 20 and 40;
+
+19	SELECT fullname from employee where fullname like 'p%';
+
+20	SELECT fullname from employee where fullname like '%n';
+
+21	SELECT fullname from employee where fullname like '_e%';
+
+22	SELECT fullname from employee where fullname = 5;
+
+23	select fullname from employee where job NOT IN('Manager')
+
+24	select name from employee where job NOT IN('Salesman','Clerk','Analyst')
+
+25	
+
+26	SELECT COUNT(fullname) as 'Total Employees' from employee
+
+27	select sum(salary) as Total_Salary from employee
+
+28	select max(salary) as Max_Salary from employee
+
+29	select min(salary) as Min_Salary from employee
+
+30	select avg(salary) as Avg_Salary from employee
+
+31	select max(salary) as Max_Salary from employee where job='Clerk'
+
+32	select max(salary) as Max_Salary from employee where department_no=20
+
+33	select min(salary) as Min_Salary from employee where job='Salesman'
+
+34	select avg(salary) as Avg_Salary from employee where job='Manager'
+
+35	select sum(salary) as Total_Salary FROM employee where job='Analyst' and department_no=40
+
+36	SELECT fullname, salary from employee ORDER BY salary
+
+37	SELECT fullname, salary from employee ORDER BY salary desc
+
+38	SELECT * from employee ORDER BY fullname
+
+39	select * from employee order by fullname,department_no,salary
+
+40	SELECT fullname, (salary*12) as Annual_Salary from employee order by salary
+
+41	select fullname,salary,salary * 15/100 HRA, salary * 5/100 PF, salary * 10/100 DA,salary+salary * 15/100-salary * 5/100+salary * 10/100 TOTAL_SALARY from employee
+
+42	SELECT department_no,COUNT(department_no) from employee GROUP BY department_no
+
+43	select job, count(*) as 'Total Emp' from employee group by job
+
+44	select department_no, sum(salary) from employee group by department_no
+
+45	select department_no, max(salary) from employee group by department_no
+
+46	select job, sum(salary) from employee group by job
+
+47	select job,min(salary) from employee GROUP by job
+
+48	select department_no, count( * ) from employee group by department_no having count( * )>=3;
+
+49	select job, sum(salary) from employee group by job having sum(salary)>40000;
+
+50 	select job, count( * ) from employee group by job having count( * )>=3;
+
+51	select fullname as NAME from employee where salary=(select max(salary) FROM employee)
+
+52	SELECT id, fullname from employee where job='Clerk' AND salary=(SELECT max(salary) FROM employee where job='Clerk')
+
+53	select fullname from employee where job='Salesman' and salary>(select MAX(salary) FROM employee where job='Clerk')
+
+54	select fullname from employee where job='Clerk' and salary<(select salary from employee where fullname='Hardik') and salary>(select salary from employee where fullname='Jadeja');
+
+55	select fullname,salary from employee e where salary = (select max(salary) from employee where department_no=e.department_no)
+
+56	select fullname,salary from employee e where salary = (select max(salary) from employee where department_no=e.department_no)
+
+57	select fullname,job from employee e where salary = (select max(salary) from employee where job=e.job)
+
+58	select fullname from employee where job='Accounting'
+
+59	select fullname from employee where address='Chicago'
+
+60	SELECT job,sum(salary) from employee GROUP BY job HAVING SUM(salary) > (select max(salary) from employee where job='Manager');
