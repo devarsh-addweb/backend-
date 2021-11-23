@@ -1,3 +1,16 @@
+<?php 
+// session_start();
+// if(!$_SESSION['email'])
+// {
+//     header('Location:index.php');
+// }
+include 'conn.php';
+$qq=$_SESSION['email'];
+  $q="SELECT fullname FROM customer_reg WHERE email='$qq'";
+  $result=mysqli_query($conn,$q);
+  $row=mysqli_fetch_assoc($result);
+  $name=$row['fullname'];
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -35,8 +48,9 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="register.php">Sign in</a>
+                <a href="login.php">Sign in</a>
                 <a href="admin_dashboard.php">ADMIN</a>
+
             </div>
             <div class="offcanvas__top__hover">
                 <!-- <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -48,14 +62,24 @@
             </div>
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+            <!-- <a href="search.php" class="search-switch"><img src="img/icon/search.png" alt=""></a> -->
+            <form method="post" action="search.php">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <input type="text" name="word" style=" background-color:white;">
+                                            <input type="submit" name="search" value="Go" style="border:none; background-color:green;">
+                                        </th>
+                                    </tr>
+                                </table>
+                            </form>
             <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="cart.php"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
+            <p style="color: white; font-size:20px;"> <?php echo strtoupper($name); ?></p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -65,19 +89,35 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-7">
+                    <div class="col-lg-5 col-md-7">
                         <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
+                            <p style="color: white; font-size:20px;"> <?php echo strtoupper($name); ?></p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-5">
+
+                    <div class="col-lg-3 col-md-7" style="background-color:;">
+                        <div class="header__top__left">
+                            <form method="post" action="search.php">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <input type="text" name="word" style="border: none; background-color:white; border-radius: 5px;">
+                                            <input type="submit" name="search" value="Go" style="border:none; background-color:goldenrod; border-radius: 5px;">
+                                        </th>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="register.php">Sign in</a> 
+                                <a href="login.php">Sign in</a> 
                                 <a href="admin_dashboard.php">ADMIN</a>
                             </div>
                             <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
+                                <!-- <span>Usd <i class="arrow_carrot-down"></i></span> -->
                                 <!-- <ul>
                                     <li>USD</li>
                                     <li>EUR</li>
@@ -99,7 +139,7 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.php">Home</a></li>
+                            <li class=""><a href="./index.php">Home</a></li>
                             <li><a href="./shop.php">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -117,10 +157,10 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                        <a href="search.php" class="search-switch"><!-- <img src="img/icon/search.png" alt=""> --></a>
                         <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="cart.php"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                        <!-- <div class="price">$0.00</div> -->
                     </div>
                 </div>
             </div>

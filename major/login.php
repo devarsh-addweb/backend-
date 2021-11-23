@@ -1,52 +1,65 @@
-<?php 
+<?php
+session_start(); 
+ob_start();
 include 'header.php';
 ?>
-<br><br><br>
-<center>
-<div class="col-lg-6 col-md-6 mb-5">
-    <div class="contact__form">
-        <form method="POST" action="">
-                <div class="col-lg-6 p-4">
-                    <font style="float: ; font-size: 30px; border-bottom: 2px solid orangered;" >Log in<br></font>
-                </div>           
-                <div class="col-lg-6">
-                    <input type="text" name="email" placeholder="Email Id">
-                </div>
-                <div class="col-lg-6">
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <div class="col-lg-6">
-                    <font style="color:red; border:none; font-size:20px;">If Not Register ?</font><a href="register.php" style="text-decoration:none; color:blue;"> Click Here</a>
-                </div><br>
-                <div class="col-lg-6">
-                    <input type="submit" name="customer_reg " value="Login" class="btn btn-primary" style="font-size: 25px; background: none; color:black;">
-                </div>
-        </form>
+
+
+<body>
+    <br><br>
+<form method="POST" action="login.php">
+
+<div class="container mt-5" style="width:40%; ">
+  <div class="row">
+    <div class="col-lg-12">
+        <h2 class="p-2 mb-3" style="border-bottom:5px solid green; width: 20%;">Log in</h2>
+      <div class="mb-3 ">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+      </div>
+      
+     <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"><font style="color:red; border:none; font-size:20px;">Don’t have an account? </font><a href="register.php" style="text-decoration:none; color:blue;">Click Here</a></label>
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      
+      <center><input type="submit" name="login" value="Log in" class="btn btn-success mb-5"></center>
     </div>
 </div>
-</center>
+</div>
+
+</form>
+</div>
+</body>
+</html>
+
 <?php 
 include "conn.php";
-error_reporting(0);
-if(isset($_POST['customer_reg ']))
+//error_reporting(0);
+if(isset($_POST['login']))
 {
   $email=$_POST['email'];
   $password=$_POST['password'];
 
-  $query="SELECT email,password FROM customer_reg  WHERE email='$email' AND password='$password'";
+  echo $query="SELECT email,password FROM customer_reg WHERE email='$email' AND password='$password'";
   //echo $query;
-  $result=mysqli_query($conn,$query) or die("Error in Query");
+  $result=mysqli_query($conn,$query);
 
   //print_r ($result);
   
-  $rows = mysqli_num_rows($result);
+  //$rows = mysqli_num_rows($result);
   //echo $rows;
-   if($rows > 0)
+   if(mysqli_num_rows($result) > 0)
    {
-     session_start();
-      //$_SESSION['email'] = $email;
-      //header('Location:insert_pro.php');
-      echo "hello";
+     
+      $_SESSION['email'] = $email;
+      header('Location:index.php');
+      
    }
    else
    {
@@ -54,8 +67,8 @@ if(isset($_POST['customer_reg ']))
    }
    
 }
+
 ?>
-<br><br>
 <?php 
 include 'footer.php';
 ?>

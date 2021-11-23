@@ -1,5 +1,13 @@
 <?php 
 include 'header.php';
+include 'conn.php';
+
+$id_man=$_GET['man_id'];
+$q="SELECT * FROM man WHERE man_id ='$id_man' ";
+$check=mysqli_query($conn,$q);
+$row=mysqli_fetch_assoc($check);
+
+
 ?>
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
@@ -9,75 +17,50 @@ include 'header.php';
                     <div class="col-lg-12">
                         <div class="product__details__breadcrumb">
                             <a href="./index.html">Home</a>
-                            <a href="./shop.html">Shop</a>
+                            <a href="index.php">Shop</a>
                             <span>Product Details</span>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-3">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-2.png">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-3.png">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-4.png">
-                                        <i class="fa fa-play"></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-9">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big-2.png" alt="">
+               <!-- img pasrt strat -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-2">
+                            
+                        </div>
+                        <div class="col-3" style="background-color:; margin-left:;">
+                            <div class="container">
+                                <div class="row" style="background-color:;">
+                                    <img src="<?php echo $row['pro_img_f']; ?>" class="p-2" style="width: 100px; height:100px; ">
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big-3.png" alt="">
+                                <div class="row" style="background-color:;">
+                                    <img src="<?php echo $row['pro_img_s']; ?>" class="p-2" style="width:100px; height:100px;">
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big.png" alt="">
+                                <div class="row" style="background-color:;">
+                                    <img src="<?php echo $row['pro_img_t']; ?>" class="p-2" style="width:100px; height:100px;">
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big-4.png" alt="">
-                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                <div class="row" style="background-color:;">
+                                    <img src="<?php echo $row['pro_img_s']; ?>" class="p-2" style="width:100px; height:100px;">
                                 </div>
                             </div>
                         </div>
+                        <div class="col-3" style="background-color:;">
+                            <img src="<?php echo $row['pro_img_f']; ?>" class="p-2" style="width: 500px; height: 400px; margin-left: -25px;">
+                        </div>
+                        <div class="col-3" style="background-color:;">
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+               <!-- img pasrt end -->
         <div class="product__details__content">
-            <div class="container">
+            <div class="container ">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="product__details__text">
-                            <h4>Hooded thermal anorak</h4>
+                            <h4><?php echo $row['pro_name']; ?></h4>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -86,10 +69,8 @@ include 'header.php';
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            <h3>$270.00 <span>70.00</span></h3>
-                            <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
-                                cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
-                            with placket.</p>
+                            <h3>₹ <?php echo $row['pro_price']; ?>.00 </h3>
+                            <p><?php echo $row['pro_description']; ?></p>
                             <div class="product__details__option">
                                 <div class="product__details__option__size">
                                     <span>Size:</span>
@@ -131,7 +112,7 @@ include 'header.php';
                                         <input type="text" value="1">
                                     </div>
                                 </div>
-                                <a href="#" class="primary-btn">add to cart</a>
+                                <a href="man_cart.php?man_id=<?php echo $row['man_id'];  ?>" class="primary-btn">add to cart</a>
                             </div>
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
@@ -141,7 +122,7 @@ include 'header.php';
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
                                 <img src="img/shop-details/details-payment.png" alt="">
                                 <ul>
-                                    <li><span>SKU:</span> 3812912</li>
+                                    <li><span>Product Code:</span><?php echo $row['pro_code']; ?></li>
                                     <li><span>Categories:</span> Clothes</li>
                                     <li><span>Tag:</span> Clothes, Skin, Body</li>
                                 </ul>

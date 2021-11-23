@@ -139,6 +139,8 @@ if(isset($_POST['customer_reg']))
 
 if(isset($_POST['product_submit']))
 {
+	$category=$_POST['radio'];
+
     $name=$_POST['pro_name'];
     $code=$_POST['pro_code'];
     $price=$_POST['pro_price'];
@@ -148,8 +150,10 @@ if(isset($_POST['product_submit']))
     $decs=$_POST['pro_desc'];
     $date_time=date('Y-m-d H:i:s');
 
-    echo $q = "INSERT INTO product 
-    (pro_name,pro_code,pro_price,pro_img,pro_img_s,pro_img_t,pro_decs,currrent_date) VALUES ('$name','$code','$price','$img','$img_s','$img_t','$decs','$date_time')";
+    //(pro_name,pro_code,pro_price,pro_img,pro_img_s,pro_img_t,pro_decs,currrent_date)
+
+    echo $q = "INSERT INTO $category  
+    (pro_name,pro_code,pro_price,pro_img_f,pro_img_s,pro_img_t,pro_description,pro_enter_time) VALUES ('$name','$code','$price','$img','$img_s','$img_t','$decs','$date_time')";
     move_uploaded_file($_FILES['file']['tmp_name'],$img);
     move_uploaded_file($_FILES['file_s']['tmp_name'],$img_s);
     move_uploaded_file($_FILES['file_t']['tmp_name'],$img_t);
@@ -164,7 +168,7 @@ if(isset($_POST['product_submit']))
     {
         echo "Record Inserted";
     }
-    header('Location:show_product.php');
+    header('Location:insert_pro.php');
 }
 
 ?>

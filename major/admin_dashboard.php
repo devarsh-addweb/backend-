@@ -19,7 +19,7 @@
         body{
   margin: 0;
   padding: 0;
-  background: url(img/bg1.jpg) no-repeat;
+  /*background: url(img/bg1.jpg) no-repeat;*/
   background-size: cover;
   /*background-image: linear-gradient(to right, skyblue , #e0c870);*/
 }
@@ -65,7 +65,7 @@
       </div>
       
      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label"><font style="color:red; border:none; font-size:20px;">Don’t have an account? </font><a href="register.php" style="text-decoration:none; color:blue;">Click Here</a></label>
+       
         <div id="emailHelp" class="form-text"></div>
       </div>
       
@@ -86,7 +86,7 @@ if(isset($_POST['login']))
   $email=$_POST['email'];
   $password=$_POST['password'];
 
-  $query="SELECT email,password FROM admin_reg WHERE email='$email' AND password='$password'";
+  echo $query="SELECT email,password FROM admin_reg WHERE email='$email' AND password='$password'";
   //echo $query;
   $result=mysqli_query($conn,$query) or die("Error in Query");
 
@@ -96,7 +96,7 @@ if(isset($_POST['login']))
   //echo $rows;
    if($rows > 0)
    {
-     session_start();
+        session_start();
       $_SESSION['email'] = $email;
       header('Location:category.php');
       

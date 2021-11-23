@@ -1,3 +1,16 @@
+<?php 
+session_start();
+if(!$_SESSION['email'])
+{
+    header('Location:admin_dashboard.php');
+}
+include 'conn.php';
+$qq=$_SESSION['email'];
+  // $q="SELECT fullname FROM admin_reg WHERE email='$qq'";
+  // $result=mysqli_query($conn,$q);
+  // $row=mysqli_fetch_assoc($result);
+  // $name=$row['fullname'];
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -35,8 +48,10 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="register.php">Sign in</a>
+
+                <a href="login.php">Sign in</a>
                 <a href="admin_dashboard.php">ADMIN</a>
+                <a href="logout_admin.php">Logout</a>
             </div>
             <div class="offcanvas__top__hover">
                 <!-- <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -67,14 +82,17 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
+                            <p style="color: white; font-size:20px;"> <?php echo strtoupper($qq); ?></p>
                             <!-- <p>Free shipping, 30-day return or refund guarantee.</p> -->
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="register.php">Sign in</a> 
+                                <a href="login.php">Sign in</a> 
                                 <a href="admin_dashboard.php">ADMIN</a>
+                                <a href="logout_admin.php">Logout</a>
+
                             </div>
                             <div class="header__top__hover">
                                 <!-- <span>Usd <i class="arrow_carrot-down"></i></span> -->
@@ -93,25 +111,32 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.php"><img src="img/logo.png" alt=""></a>
+                        <a href=""><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="insert_pro.php">Insert Pro</a></li>
-                            <li><a href="show_product.php">Show Product</a></li>
-                            <li><a href="#">Pages</a>
+
+                            <li><a href="category.php">DaseBoard</a></li>
+                            <li class=""><a href="insert_pro.php">Insert Pro</a></li>
+                            <!-- <li><a href="show_product.php">Show Product</a></li> -->
+                            <li><a href="#"> Products</a>
                                 <ul class="dropdown">
-                                    <li><a href="about.php">About Us</a></li>
-                                    <li><a href="shop-details.php">Shop Details</a></li>
-                                    <li><a href="shopping-cart.php">Shopping Cart</a></li>
-                                    <li><a href="checkout.php">Check Out</a></li>
-                                    <li><a href="blog-details.php">Blog Details</a></li>
+                                    <li><a href="man_pro.php">Man Product</a></li>
+                                    <li><a href="female_pro.php">Female Product</a></li>
+                                    <li><a href="kids_pro.php">Kids Product</a></li>
+                                    <!-- <li><a href="admin_cart.php">Cart Product</a></li> -->
+                                    <!-- <li><a href="about.php">Man Product</a></li>
+                                    <li><a href="shop-details.php">Female Product</a></li>
+                                    <li><a href="shopping-cart.php">Kids Product</a></li> -->
+                                    <<!-- li><a href="checkout.php">Check Out</a></li>
+                                    <li><a href="blog-details.php">Blog Details</a></li> -->
                                 </ul>
                             </li>
-                            <li><a href="./blog.php">Blog</a></li>
-                            <li><a href="./contact.php">Contacts</a></li>
+                            
+                            <li><a href="admin_cart.php">Cart Item</a></li>
+
                         </ul>
                     </nav>
                 </div>
