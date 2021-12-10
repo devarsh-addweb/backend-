@@ -1,0 +1,628 @@
+-------------------STRING FUNCTION---------------------------
+
+
+MariaDB [addweb]> select ascii(id) as numcodeoffirstchar from product;
++--------------------+
+| numcodeoffirstchar |
++--------------------+
+| 49 |
+| 50 |
+| 51 |
+| 53 |
+| 54 |
+| 55 |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [addweb]> SELECT CHAR_LENGTH("SQL Tutorial") AS LengthOfString;
++----------------+
+| LengthOfString |
++----------------+
+| 12 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT CONCAT("SQL ", "Tutorial ", "is ", "fun!") AS ConcatenatedString;
++----------------------+
+| ConcatenatedString |
++----------------------+
+| SQL Tutorial is fun! |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT FIELD("q", "s", "q", "l");
++---------------------------+
+| FIELD("q", "s", "q", "l") |
++---------------------------+
+| 2 |
++---------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT FIND_IN_SET("q", "s,q,l");
++---------------------------+
+| FIND_IN_SET("q", "s,q,l") |
++---------------------------+
+| 2 |
++---------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT FORMAT(250500.5634, 2);
++------------------------+
+| FORMAT(250500.5634, 2) |
++------------------------+
+| 250,500.56 |
++------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT INSERT("sanjay", 1, 9, "Example");
++-----------------------------------+
+| INSERT("sanjay", 1, 9, "Example") |
++-----------------------------------+
+| Example |
++-----------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT LCASE("work done");
++--------------------+
+| LCASE("work done") |
++--------------------+
+| work done |
++--------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT LEFT("done", 3) AS ExtractString;
++---------------+
+| ExtractString |
++---------------+
+| don |
++---------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT REPLACE("done", "SQL", "HTML");
++--------------------------------+
+| REPLACE("done", "SQL", "HTML") |
++--------------------------------+
+| done |
++--------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]>
+MariaDB [addweb]> SELECT REPEAT("done", 3);
++-------------------+
+| REPEAT("done", 3) |
++-------------------+
+| donedonedone |
++-------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT REVERSE("done");
++-----------------+
+| REVERSE("done") |
++-----------------+
+| enod |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT RPAD("done", 20, "ABC");
++-------------------------+
+| RPAD("done", 20, "ABC") |
++-------------------------+
+| doneABCABCABCABCABCA |
++-------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> SELECT SPACE(10);
++------------+
+| SPACE(10) |
++------------+
+| |
++------------+
+1 row in set (0.000 sec)
+
+
+addweb@LP-59:~$ sudo /opt/lampp/bin/mysql -u root -p
+[sudo] password for addweb: 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+addweb@LP-59:~$ sudo /opt/lampp/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 56
+Server version: 10.4.21-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'show databases' at line 2
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addweb             |
+| backbone           |
+| information_schema |
+| male_fashion       |
+| mysql              |
+| pdo                |
+| performance_schema |
+| phpmyadmin         |
+| practice           |
+| sqlrun             |
+| test               |
+| travel             |
++--------------------+
+12 rows in set (0.001 sec)
+
+MariaDB [(none)]> use test;
+Database changed
+MariaDB [test]> use addweb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [addweb]> select * from student;
++----+-----------------+----------+---------------+------------+
+| id | fullname        | password | email         | mobile     |
++----+-----------------+----------+---------------+------------+
+|  1 | devarsh chauhan | chauhan  | dev@gmail.com | 9878765656 |
+|  5 | menil           | menil    | m@gmail.com   |   65432345 |
+|  6 | uv patel        | uv       | u@gmail.com   |   12345678 |
+|  9 | ranjeet jaiswal | rj       | r@gmail.com   |  987654321 |
+| 11 | gopi            | gopi     | g@gmail.com   |          0 |
++----+-----------------+----------+---------------+------------+
+5 rows in set (0.001 sec)
+
+MariaDB [addweb]> select ascii(id) as numcodeoffistchar from product;
+ERROR 1146 (42S02): Table 'addweb.product' doesn't exist
+MariaDB [addweb]> select char_lenth ("sql tutorial") as lenthofstring;
+ERROR 1558 (HY000): Column count of mysql.proc is wrong. Expected 21, found 20. Created with MariaDB 100108, now running 100421. Please use mysql_upgrade to fix this error
+MariaDB [addweb]> select char_length("anjani patel") as lengthofstring;
++----------------+
+| lengthofstring |
++----------------+
+|             12 |
++----------------+
+1 row in set (0.051 sec)
+
+MariaDB [addweb]> select char_length("devarsh chauhan") as lengthofstring;
++----------------+
+| lengthofstring |
++----------------+
+|             15 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select character_length("devarsh chauhan") as lengthofstring;
++----------------+
+| lengthofstring |
++----------------+
+|             15 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select concat("devarsh","chauhan") as lengthofstring;
++----------------+
+| lengthofstring |
++----------------+
+| devarshchauhan |
++----------------+
+1 row in set (0.015 sec)
+
+MariaDB [addweb]> select concat("devarsh","chauhan","d") as lengthofstring;
++-----------------+
+| lengthofstring  |
++-----------------+
+| devarshchauhand |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select concat_ws("devarsh","chauhan","d") as lengthofstring;
++-----------------+
+| lengthofstring  |
++-----------------+
+| chauhandevarshd |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select concat_ws("-","devarsh","chauhan","d") as lengthofstring;
++-------------------+
+| lengthofstring    |
++-------------------+
+| devarsh-chauhan-d |
++-------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select field("d","d");
++----------------+
+| field("d","d") |
++----------------+
+|              1 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select find_in_set("q","d");
++----------------------+
+| find_in_set("q","d") |
++----------------------+
+|                    0 |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select format(1000000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+MariaDB [addweb]> select format(1000000,2);
++-------------------+
+| format(1000000,2) |
++-------------------+
+| 1,000,000.00      |
++-------------------+
+1 row in set (0.075 sec)
+
+MariaDB [addweb]> select format(1000000,4);
++-------------------+
+| format(1000000,4) |
++-------------------+
+| 1,000,000.0000    |
++-------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select insert ("devarsh","2,3,"addweb");
+    "> 
+    "> 
+    "> select insert ("devarsh",2,3,"addweb");
+    "> Ctrl-C -- exit!
+Aborted
+addweb@LP-59:~$ sudo /opt/lampp/bin/mysql -u root -p
+[sudo] password for addweb: 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 103
+Server version: 10.4.21-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select databses;
+ERROR 1054 (42S22): Unknown column 'databses' in 'field list'
+MariaDB [(none)]> select databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databases' at line 1
+MariaDB [(none)]> sudo /opt/lammp/bin/mysql -u root -p
+    -> 
+    -> 
+    -> sudo /opt/lampp/bin/mysql -u root -p
+    -> Ctrl-C -- exit!
+Aborted
+addweb@LP-59:~$ sudo /opt/lampp/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 104
+Server version: 10.4.21-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addweb             |
+| backbone           |
+| information_schema |
+| male_fashion       |
+| mysql              |
+| pdo                |
+| performance_schema |
+| phpmyadmin         |
+| practice           |
+| sqlrun             |
+| test               |
+| travel             |
++--------------------+
+12 rows in set (0.075 sec)
+
+MariaDB [(none)]> select rtrim(e_name) as rightstring from employee;
+[1]+  Stopped                 sudo /opt/lampp/bin/mysql -u root -p
+addweb@LP-59:~$ sudo /opt/lampp/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 105
+Server version: 10.4.21-MariaDB Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> sshow databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'sshow databases' at line 1
+MariaDB [(none)]> show databses;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databses' at line 1
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addweb             |
+| backbone           |
+| information_schema |
+| male_fashion       |
+| mysql              |
+| pdo                |
+| performance_schema |
+| phpmyadmin         |
+| practice           |
+| sqlrun             |
+| test               |
+| travel             |
++--------------------+
+12 rows in set (0.001 sec)
+
+MariaDB [(none)]> use addweb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [addweb]> select * from student;
++----+-----------------+----------+---------------+------------+
+| id | fullname        | password | email         | mobile     |
++----+-----------------+----------+---------------+------------+
+|  1 | devarsh chauhan | chauhan  | dev@gmail.com | 9878765656 |
+|  5 | menil           | menil    | m@gmail.com   |   65432345 |
+|  6 | uv patel        | uv       | u@gmail.com   |   12345678 |
+|  9 | ranjeet jaiswal | rj       | r@gmail.com   |  987654321 |
+| 11 | gopi            | gopi     | g@gmail.com   |          0 |
++----+-----------------+----------+---------------+------------+
+5 rows in set (0.060 sec)
+
+MariaDB [addweb]> select rtrim(fullname) as rightstring from student;
++-----------------+
+| rightstring     |
++-----------------+
+| devarsh chauhan |
+| menil           |
+| uv patel        |
+| ranjeet jaiswal |
+| gopi            |
++-----------------+
+5 rows in set (0.044 sec)
+
+MariaDB [addweb]> 
+MariaDB [addweb]> select space(50);
++----------------------------------------------------+
+| space(50)                                          |
++----------------------------------------------------+
+|                                                    |
++----------------------------------------------------+
+1 row in set (0.017 sec)
+
+MariaDB [addweb]> elect substr(fullname,2,5) as extractstring from student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'elect substr(fullname,2,5) as extractstring from student' at line 1
+MariaDB [addweb]> select substr(fullname,2,5) as extractstring from student;
++---------------+
+| extractstring |
++---------------+
+| evars         |
+| enil          |
+| v pat         |
+| anjee         |
+| opi           |
++---------------+
+5 rows in set (0.044 sec)
+
+
+
+DATE FUNCTION'S
+-----------------------------------------------------------------------------------------------
+
+
+
+MariaDB [addweb]> select adddate("2021-11-22", interval 10 day);
++----------------------------------------+
+| adddate("2021-11-22", interval 10 day) |
++----------------------------------------+
+| 2021-12-02                             |
++----------------------------------------+
+1 row in set (0.075 sec)
+
+MariaDB [addweb]> select addtime("2021-11-22 09:34:21", "2");
++-------------------------------------+
+| addtime("2021-11-22 09:34:21", "2") |
++-------------------------------------+
+| 2021-11-22 09:34:23                 |
++-------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2021-11-23 |
++------------+
+1 row in set (0.052 sec)
+
+MariaDB [addweb]> select curdate()+1;
++-------------+
+| curdate()+1 |
++-------------+
+|    20211124 |
++-------------+
+1 row in set (0.046 sec)
+
+MariaDB [addweb]> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 15:38:38       |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select current_timestamp();
++---------------------+
+| current_timestamp() |
++---------------------+
+| 2021-11-23 15:38:51 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select date_add("2021-11-22", interval 10 day);
++-----------------------------------------+
+| date_add("2021-11-22", interval 10 day) |
++-----------------------------------------+
+| 2021-12-02                              |
++-----------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select date_format("2021-11-22","%y");
++--------------------------------+
+| date_format("2021-11-22","%y") |
++--------------------------------+
+| 21                             |
++--------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> elect date_sub("2021-06-15", interval -2 month);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'elect date_sub("2021-06-15", interval -2 month)' at line 1
+MariaDB [addweb]> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             23 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select dayofmonth("2021-11-22");
++--------------------------+
+| dayofmonth("2021-11-22") |
++--------------------------+
+|                       22 |
++--------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select dayofweek("2021-11-22");
++-------------------------+
+| dayofweek("2021-11-22") |
++-------------------------+
+|                       2 |
++-------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select dayofyear("2021-11-21");
++-------------------------+
+| dayofyear("2021-11-21") |
++-------------------------+
+|                     325 |
++-------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select extract(month from "2021-11-22");
++----------------------------------+
+| extract(month from "2021-11-22") |
++----------------------------------+
+|                               11 |
++----------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select from_days(685467);
++-------------------+
+| from_days(685467) |
++-------------------+
+| 1876-09-29        |
++-------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select last_day("2021-11-22");
++------------------------+
+| last_day("2021-11-22") |
++------------------------+
+| 2021-11-30             |
++------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select localtime();
++---------------------+
+| localtime()         |
++---------------------+
+| 2021-11-23 15:40:36 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select localtimestamp();
++---------------------+
+| localtimestamp()    |
++---------------------+
+| 2021-11-23 15:40:45 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select makedate();
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'makedate'
+MariaDB [addweb]> select makedate(2021,3);
++------------------+
+| makedate(2021,3) |
++------------------+
+| 2021-01-03       |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2021-11-23 15:41:17 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> elect sec_to_time(1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'elect sec_to_time(1)' at line 1
+MariaDB [addweb]> select sec_to_time(1);
++----------------+
+| sec_to_time(1) |
++----------------+
+| 00:00:01       |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select time("19:20:10");
++------------------+
+| time("19:20:10") |
++------------------+
+| 19:20:10         |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select timestamp("2021-1-1","13:10:11");
++----------------------------------+
+| timestamp("2021-1-1","13:10:11") |
++----------------------------------+
+| 2021-01-01 13:10:11              |
++----------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select week("2021-02-22");
++--------------------+
+| week("2021-02-22") |
++--------------------+
+|                  8 |
++--------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select yearweek("2021-2-2");
++----------------------+
+| yearweek("2021-2-2") |
++----------------------+
+|               202105 |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]> select year("2021-2-2");
++------------------+
+| year("2021-2-2") |
++------------------+
+|             2021 |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [addweb]>
