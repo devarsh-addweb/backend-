@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="weather.css">
+    <title>Weather App</title>
+</head>
+<body>
+<center>
+	    <div class="app-main" style="border: 1px solid grey; width: 50%; background-color:floralwhite;">
+        <div class="searchInputBox">
+            <input type="text" id="input-box" class="input-box" placeholder="Enter city name..." autocomplete="off" style="border: none; background-color: #e3ffee; height: 40px;margin-top: 30px; border-radius: 10px;">
+
+        </div>
+
+        <div class="weather-body">
+            <div class="location-details">
+                <div class="city" id="city" style="color: grey; font-size: 20px;"><h2>Ahmedabad, IN</h2></div>
+                <div class="date" id="date" style="color: grey; font-size: 16px;"><h4>20 Dec (Monday), 2021</h4></div>
+            </div>
+
+            <div class="weather-status">
+                <div class="temp" id="temp" style="color: grey;font-size: 16px;"><h4>21&deg;C</h4></div>
+                <div class="min-max" id="min-max" style="color: grey;font-size: 16px;"><h4>20&deg;C (min) /20&deg;C (max)</h4></div>
+                <div class="weather" id="weather" style="color: grey;font-size: 16px;"><h3>Clear</h3></div>
+                <div id="img"></div>
+            </div>
+     </div>
+    </div>
+</center>
+
+    <script src="weather.js"></script>
+</body>
+</html>
+
