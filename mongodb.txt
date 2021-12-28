@@ -1,4 +1,1122 @@
 
+                   -----  start to install MongoDb and all Table inserted   ------
+
+
+addweb@LP-59:~$ sudo apt install mongodb
+[sudo] password for addweb: 
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+addweb@LP-59:~$ +-sudo dpkg --configure -a
++-sudo: command not found
+addweb@LP-59:~$ sudo dpkg --configure -a
+Processing triggers for man-db (2.9.1-1) ...
+addweb@LP-59:~$ sudo apt install mongodb
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  gnome-software-common libaio1 libappstream-glib8 libboost-system1.65.1
+  libexiv2-14 libexporter-tiny-perl libgeoip1 libgnutls-openssl27
+  libjson-maybexs-perl libncurses5 libncursesw5 liboauth0 libperlio-gzip-perl
+  libreadline5 libtinfo5 libtype-tiny-perl linux-generic-hwe-18.04
+  linux-headers-generic-hwe-18.04 linux-hwe-5.4-headers-5.4.0-91
+  linux-image-generic-hwe-18.04 mariadb-common node-cookie-jar t1utils
+  xserver-xorg-video-intel-hwe-18.04
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libboost-program-options1.71.0 libgoogle-perftools4 libpcrecpp0v5
+  libtcmalloc-minimal4 libyaml-cpp0.6 mongo-tools mongodb-clients
+  mongodb-server mongodb-server-core postfix
+Suggested packages:
+  procmail postfix-mysql postfix-pgsql postfix-ldap postfix-pcre postfix-lmdb
+  postfix-sqlite sasl2-bin | dovecot-common resolvconf postfix-cdb postfix-doc
+The following NEW packages will be installed:
+  libboost-program-options1.71.0 libgoogle-perftools4 libpcrecpp0v5
+  libtcmalloc-minimal4 libyaml-cpp0.6 mongo-tools mongodb mongodb-clients
+  mongodb-server mongodb-server-core
+The following packages will be upgraded:
+  postfix
+1 upgraded, 10 newly installed, 0 to remove and 21 not upgraded.
+1 not fully installed or removed.
+Need to get 56.3 MB/57.5 MB of archives.
+After this operation, 234 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libboost-program-options1.71.0 amd64 1.71.0-6ubuntu6 [342 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libtcmalloc-minimal4 amd64 2.7-1ubuntu2 [93.0 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libgoogle-perftools4 amd64 2.7-1ubuntu2 [195 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libpcrecpp0v5 amd64 2:8.39-12build1 [15.5 kB]
+Get:5 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libyaml-cpp0.6 amd64 0.6.2-4ubuntu1 [124 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu focal/universe amd64 mongo-tools amd64 3.6.3-0ubuntu1 [12.3 MB]
+Get:7 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 mongodb-clients amd64 1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3 [21.6 MB]
+Get:8 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 mongodb-server-core amd64 1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3 [21.6 MB]
+Get:9 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 mongodb-server all 1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3 [12.5 kB]
+Get:10 http://in.archive.ubuntu.com/ubuntu focal-updates/universe amd64 mongodb amd64 1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3 [9,640 B]
+Fetched 56.3 MB in 4s (14.2 MB/s)   
+Preconfiguring packages ...
+(Reading database ... 241598 files and directories currently installed.)
+Preparing to unpack .../00-postfix_3.4.13-0ubuntu1.2_amd64.deb ...
+grep: /etc/postfix/master.cf: No such file or directory
+grep: /etc/postfix/master.cf: No such file or directory
+Failed to stop postfix.service: Unit postfix.service not loaded.
+Unpacking postfix (3.4.13-0ubuntu1.2) over (3.4.13-0ubuntu1.2) ...
+Selecting previously unselected package libboost-program-options1.71.0:amd64.
+Preparing to unpack .../01-libboost-program-options1.71.0_1.71.0-6ubuntu6_amd64.
+deb ...
+Unpacking libboost-program-options1.71.0:amd64 (1.71.0-6ubuntu6) ...
+Selecting previously unselected package libtcmalloc-minimal4:amd64.
+Preparing to unpack .../02-libtcmalloc-minimal4_2.7-1ubuntu2_amd64.deb ...
+Unpacking libtcmalloc-minimal4:amd64 (2.7-1ubuntu2) ...
+Selecting previously unselected package libgoogle-perftools4:amd64.
+Preparing to unpack .../03-libgoogle-perftools4_2.7-1ubuntu2_amd64.deb ...
+Unpacking libgoogle-perftools4:amd64 (2.7-1ubuntu2) ...
+Selecting previously unselected package libpcrecpp0v5:amd64.
+Preparing to unpack .../04-libpcrecpp0v5_2%3a8.39-12build1_amd64.deb ...
+Unpacking libpcrecpp0v5:amd64 (2:8.39-12build1) ...
+Selecting previously unselected package libyaml-cpp0.6:amd64.
+Preparing to unpack .../05-libyaml-cpp0.6_0.6.2-4ubuntu1_amd64.deb ...
+Unpacking libyaml-cpp0.6:amd64 (0.6.2-4ubuntu1) ...
+Selecting previously unselected package mongo-tools.
+Preparing to unpack .../06-mongo-tools_3.6.3-0ubuntu1_amd64.deb ...
+Unpacking mongo-tools (3.6.3-0ubuntu1) ...
+Selecting previously unselected package mongodb-clients.
+Preparing to unpack .../07-mongodb-clients_1%3a3.6.9+really3.6.8+90~g8e540c0b6d-
+0ubuntu5.3_amd64.deb ...
+Unpacking mongodb-clients (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ...
+Selecting previously unselected package mongodb-server-core.
+Preparing to unpack .../08-mongodb-server-core_1%3a3.6.9+really3.6.8+90~g8e540c0
+b6d-0ubuntu5.3_amd64.deb ...
+Unpacking mongodb-server-core (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ..
+.
+Selecting previously unselected package mongodb-server.
+Preparing to unpack .../09-mongodb-server_1%3a3.6.9+really3.6.8+90~g8e540c0b6d-0
+ubuntu5.3_all.deb ...
+Unpacking mongodb-server (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ...
+Selecting previously unselected package mongodb.
+Preparing to unpack .../10-mongodb_1%3a3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5
+.3_amd64.deb ...
+Unpacking mongodb (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ...
+Setting up libpcrecpp0v5:amd64 (2:8.39-12build1) ...
+Setting up libtcmalloc-minimal4:amd64 (2.7-1ubuntu2) ...
+Setting up libyaml-cpp0.6:amd64 (0.6.2-4ubuntu1) ...
+Setting up postfix (3.4.13-0ubuntu1.2) ...
+Adding group `postfix' (GID 135) ...
+Done.
+Adding system user `postfix' (UID 129) ...
+Adding new user `postfix' (UID 129) with group `postfix' ...
+Not creating home directory `/var/spool/postfix'.
+Creating /etc/postfix/dynamicmaps.cf
+Adding group `postdrop' (GID 136) ...
+Done.
+setting myhostname: LP-59
+setting alias maps
+setting alias database
+mailname is not a fully qualified domain name.  Not changing /etc/mailname.
+setting destinations: $myhostname, LP-59, localhost.localdomain, localhost
+setting relayhost: 
+setting mynetworks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+setting mailbox_size_limit: 0
+setting recipient_delimiter: +
+setting inet_interfaces: loopback-only
+setting default_transport: error
+setting relay_transport: error
+setting inet_protocols: all
+/etc/aliases does not exist, creating it.
+WARNING: /etc/aliases exists, but does not have a root alias.
+
+Postfix (main.cf) is now set up with a default configuration.  If you need to 
+make changes, edit /etc/postfix/main.cf (and others) as needed.  To view 
+Postfix configuration values, see postconf(1).
+
+After modifying main.cf, be sure to run 'systemctl reload postfix'.
+
+Running newaliases
+Created symlink /etc/systemd/system/multi-user.target.wants/postfix.service → /l
+ib/systemd/system/postfix.service.
+Setting up mongo-tools (3.6.3-0ubuntu1) ...
+Setting up libgoogle-perftools4:amd64 (2.7-1ubuntu2) ...
+Setting up libboost-program-options1.71.0:amd64 (1.71.0-6ubuntu6) ...
+Setting up mongodb-clients (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ...
+Setting up mongodb-server-core (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) .
+..
+Setting up mongodb-server (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/mongodb.service → /l
+ib/systemd/system/mongodb.service.
+Setting up mongodb (1:3.6.9+really3.6.8+90~g8e540c0b6d-0ubuntu5.3) ...
+Processing triggers for systemd (245.4-4ubuntu3.13) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Processing triggers for rsyslog (8.2001.0-1ubuntu1.1) ...
+Processing triggers for ufw (0.36-6ubuntu1) ...
+addweb@LP-59:~$ sudo apt update
+Hit:1 http://in.archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]     
+Get:3 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]   
+Hit:4 http://dl.google.com/linux/chrome/deb stable InRelease                   
+Hit:5 http://security.ubuntu.com/ubuntu focal-security InRelease               
+Hit:6 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease
+Fetched 222 kB in 3s (87.3 kB/s)
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+21 packages can be upgraded. Run 'apt list --upgradable' to see them.
+addweb@LP-59:~$ sudo service mongodb start
+addweb@LP-59:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("8f012b39-6545-4e6f-bdcb-3507c22af740") }
+MongoDB server version: 3.6.8
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+Server has startup warnings: 
+2021-12-28T13:17:48.969+0530 I STORAGE  [initandlisten] 
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-28T13:17:51.798+0530 I CONTROL  [initandlisten] 
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] 
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> d=300;
+300
+> x=100;
+100
+> d/x;
+3
+> use admin
+switched to db admin
+> db
+admin
+> db.dropdatabase()
+2021-12-28T13:24:36.249+0530 E QUERY    [thread1] TypeError: db.dropdatabase is not a function :
+@(shell):1:1
+> db
+admin
+> show collections
+system.version
+> db.comments.drop()
+false
+> db.createCollection('admin')
+{ "ok" : 1 }
+> shoe collection
+2021-12-28T13:26:34.692+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:5
+> show collection
+2021-12-28T13:26:54.261+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> db.comments.insert({
+...     'name': 'Ashish',
+...     'lang': 'JavaScript',
+...     'member_since': 5
+...  })
+WriteResult({ "nInserted" : 1 })
+> db
+admin
+> show collections
+admin
+comments
+system.version
+> db.createCollection('regi')
+{ "ok" : 1 }
+> db
+admin
+> show collection
+2021-12-28T13:32:19.483+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collections
+admin
+comments
+regi
+system.version
+> db.comments.insertMany([{
+...     'name': 'Atul',
+...     'lang': 'JavaScript',
+...     'member_since': 5
+...     }, 
+...     {'name': 'Rohan',
+...     'lang': 'Python',
+...     'member_since': 3
+...     },
+...     {'name': 'Lovish',
+...     'lang': 'Java',
+...     'member_since': 4
+... }])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("61cac4cc6c8fdfddafc66935"),
+		ObjectId("61cac4cc6c8fdfddafc66936"),
+		ObjectId("61cac4cc6c8fdfddafc66937")
+	]
+}
+> db.comments.insertMany([{     'name': 'Atul',     'lang': 'JavaScript',     'member_since': 5     },      {'name': 'Rohan',     'lang': 'Python',     'member_since': 3     },     {'name': 'Lovish',     'lang': 'Java',     'member_since': 4 }])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("61cac4ee6c8fdfddafc66938"),
+		ObjectId("61cac4ee6c8fdfddafc66939"),
+		ObjectId("61cac4ee6c8fdfddafc6693a")
+	]
+}
+> db.comments.insert({})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({'name':'devarsh','language':'php','member_since':5})
+WriteResult({ "nInserted" : 1 })
+> show collection;
+2021-12-28T13:36:29.437+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collection
+2021-12-28T13:36:36.139+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> db.comments.fins()
+2021-12-28T13:37:33.395+0530 E QUERY    [thread1] TypeError: db.comments.fins is not a function :
+@(shell):1:1
+> db.comments.find()
+{ "_id" : ObjectId("61cac3566c8fdfddafc66934"), "name" : "Ashish", "lang" : "JavaScript", "member_since" : 5 }
+{ "_id" : ObjectId("61cac4cc6c8fdfddafc66935"), "name" : "Atul", "lang" : "JavaScript", "member_since" : 5 }
+{ "_id" : ObjectId("61cac4cc6c8fdfddafc66936"), "name" : "Rohan", "lang" : "Python", "member_since" : 3 }
+{ "_id" : ObjectId("61cac4cc6c8fdfddafc66937"), "name" : "Lovish", "lang" : "Java", "member_since" : 4 }
+{ "_id" : ObjectId("61cac4ee6c8fdfddafc66938"), "name" : "Atul", "lang" : "JavaScript", "member_since" : 5 }
+{ "_id" : ObjectId("61cac4ee6c8fdfddafc66939"), "name" : "Rohan", "lang" : "Python", "member_since" : 3 }
+{ "_id" : ObjectId("61cac4ee6c8fdfddafc6693a"), "name" : "Lovish", "lang" : "Java", "member_since" : 4 }
+{ "_id" : ObjectId("61cac50f6c8fdfddafc6693b") }
+{ "_id" : ObjectId("61cac5776c8fdfddafc6693c"), "name" : "devarsh", "language" : "php", "member_since" : 5 }
+> db.comments.insert({'name':'riya','language':'python','member_since':6})
+WriteResult({ "nInserted" : 1 })
+> db.comments.insert({'name':'kumal','language':'html','member_since':7})
+WriteResult({ "nInserted" : 1 })
+> db.comments.fins()
+2021-12-28T13:39:32.322+0530 E QUERY    [thread1] TypeError: db.comments.fins is not a function :
+@(shell):1:1
+> db.comments.find()
+{ "_id" : ObjectId("61cac3566c8fdfddafc66934"), "name" : "Ashish", "lang" : "JavaScript", "member_since" : 5 }
+{ "_id" : ObjectId("61cac4cc6c8fdfddafc66935"), "name" : "Atul", "lang" : "JavaScript", "member_since" : 5 }
+{ "_id" : ObjectId("61cac4cc6c8fdfddafc66936"), "name" : "Rohan", "lang" : "Python", "member_since" : 3 }
+{ "_id" : ObjectId("61cac4cc6c8fdfddafc66937"), "name" : "Lovish", "lang" : "Java", "member_since" : 4 }
+{ "_id" : ObjectId("61cac4ee6c8fdfddafc66938"), "name" : "Atul", "lang" : "JavaScript", "member_since" : 5 }
+{ "_id" : ObjectId("61cac4ee6c8fdfddafc66939"), "name" : "Rohan", "lang" : "Python", "member_since" : 3 }
+{ "_id" : ObjectId("61cac4ee6c8fdfddafc6693a"), "name" : "Lovish", "lang" : "Java", "member_since" : 4 }
+{ "_id" : ObjectId("61cac50f6c8fdfddafc6693b") }
+{ "_id" : ObjectId("61cac5776c8fdfddafc6693c"), "name" : "devarsh", "language" : "php", "member_since" : 5 }
+{ "_id" : ObjectId("61cac6156c8fdfddafc6693d"), "name" : "riya", "language" : "python", "member_since" : 6 }
+{ "_id" : ObjectId("61cac6336c8fdfddafc6693e"), "name" : "kumal", "language" : "html", "member_since" : 7 }
+> ^C
+bye
+addweb@LP-59:~$ db
+db: command not found
+addweb@LP-59:~$ sudo service mongodb start
+[sudo] password for addweb: 
+addweb@LP-59:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("ef9fa9a3-4353-4b72-98fb-f6a89b8190c7") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-12-28T13:17:48.969+0530 I STORAGE  [initandlisten] 
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-28T13:17:51.798+0530 I CONTROL  [initandlisten] 
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] 
+> show collection
+2021-12-28T13:43:26.928+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collections
+> show collections
+> 
+> 
+> db
+test
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db
+test
+> db
+test
+> db.test()
+2021-12-28T13:45:13.709+0530 E QUERY    [thread1] TypeError: db.test is not a function :
+@(shell):1:1
+> db.dropDatabase()
+{ "ok" : 1 }
+> db
+test
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use mydb
+switched to db mydb
+> db
+mydb
+> switched to db test
+2021-12-28T13:48:03.056+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:9
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use addweb
+switched to db addweb
+> db
+addweb
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db
+addweb
+> show collectios
+2021-12-28T13:49:27.124+0530 E QUERY    [thread1] Error: don't know how to show [collectios] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> db.createCollection('registrer')
+{ "ok" : 1 }
+> show collectios
+2021-12-28T13:50:10.976+0530 E QUERY    [thread1] Error: don't know how to show [collectios] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collectios
+2021-12-28T13:50:17.836+0530 E QUERY    [thread1] Error: don't know how to show [collectios] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> db.register.insert({'name':'devarsh','surname':'chauhan','id':1})
+WriteResult({ "nInserted" : 1 })
+> db.addweb.find()
+> db
+addweb
+> db.comments.find()
+> db.register.insert({'name':'yatri','surname':'chauhan','id':2})
+WriteResult({ "nInserted" : 1 })
+> db.register.insert({'name':'brijesh','surname':'chauhan','id':3})
+WriteResult({ "nInserted" : 1 })
+> db.register.insert({'name':'bhaumik','surname':'chauhan','id':4})
+WriteResult({ "nInserted" : 1 })
+> db.register.insert({'name':'tirth','surname':'chauhan','id':5})
+WriteResult({ "nInserted" : 1 })
+> db.register.insertMany([{'name':'druvik','surname':'bhatiya','id':6},{'name':'menil','surname':'kothari','id':7},{'name':'vimal','surname':'chauhan','id':8},{'name':'jay','surname':'bhanusali','id':9},{'name':'axu','surname':'pandya','id':10}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("61cacabfdf4a456790685330"),
+		ObjectId("61cacabfdf4a456790685331"),
+		ObjectId("61cacabfdf4a456790685332"),
+		ObjectId("61cacabfdf4a456790685333"),
+		ObjectId("61cacabfdf4a456790685334")
+	]
+}
+> db.comments.find()
+> db\
+2021-12-28T13:59:26.789+0530 E QUERY    [thread1] SyntaxError: unterminated string literal @(shellhelp1):1:24
+error2:SyntaxError: unterminated string literal @(shellhelp1):1:24
+
+> db
+addweb
+> show collectios
+2021-12-28T13:59:43.845+0530 E QUERY    [thread1] Error: don't know how to show [collectios] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> db
+addweb
+> show dbs
+addweb  0.000GB
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db
+addweb
+> show collections
+register
+registrer
+> db.registrer.drop()
+true
+> show collections
+register
+> db.register.insertMany([{'name':'druvik','surname':'bhatiya','id':1},{'name':'menil','surname':'kothari','id':2},{'name':'vimal','surname':'chauhan','id':3},{'name':'jay','surname':'bhanusali','id':4},{'name':'axu','surname':'pandya','id':5}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("61cacb99df4a456790685335"),
+		ObjectId("61cacb99df4a456790685336"),
+		ObjectId("61cacb99df4a456790685337"),
+		ObjectId("61cacb99df4a456790685338"),
+		ObjectId("61cacb99df4a456790685339")
+	]
+}
+> db.comments.find()
+> db
+addweb
+> db.comments.find()
+> show collections
+register
+> db.register.insert({'name':'devarsh','surname':'chauhan','is':1})
+WriteResult({ "nInserted" : 1 })
+> db.comments.find()
+> db.register.find()
+{ "_id" : ObjectId("61cac930df4a45679068532b"), "name" : "devarsh", "surname" : "chauhan", "id" : 1 }
+{ "_id" : ObjectId("61cac987df4a45679068532c"), "name" : "yatri", "surname" : "chauhan", "id" : 2 }
+{ "_id" : ObjectId("61cac991df4a45679068532d"), "name" : "brijesh", "surname" : "chauhan", "id" : 3 }
+{ "_id" : ObjectId("61cac99edf4a45679068532e"), "name" : "bhaumik", "surname" : "chauhan", "id" : 4 }
+{ "_id" : ObjectId("61cac9aadf4a45679068532f"), "name" : "tirth", "surname" : "chauhan", "id" : 5 }
+{ "_id" : ObjectId("61cacabfdf4a456790685330"), "name" : "druvik", "surname" : "bhatiya", "id" : 6 }
+{ "_id" : ObjectId("61cacabfdf4a456790685331"), "name" : "menil", "surname" : "kothari", "id" : 7 }
+{ "_id" : ObjectId("61cacabfdf4a456790685332"), "name" : "vimal", "surname" : "chauhan", "id" : 8 }
+{ "_id" : ObjectId("61cacabfdf4a456790685333"), "name" : "jay", "surname" : "bhanusali", "id" : 9 }
+{ "_id" : ObjectId("61cacabfdf4a456790685334"), "name" : "axu", "surname" : "pandya", "id" : 10 }
+{ "_id" : ObjectId("61cacb99df4a456790685335"), "name" : "druvik", "surname" : "bhatiya", "id" : 1 }
+{ "_id" : ObjectId("61cacb99df4a456790685336"), "name" : "menil", "surname" : "kothari", "id" : 2 }
+{ "_id" : ObjectId("61cacb99df4a456790685337"), "name" : "vimal", "surname" : "chauhan", "id" : 3 }
+{ "_id" : ObjectId("61cacb99df4a456790685338"), "name" : "jay", "surname" : "bhanusali", "id" : 4 }
+{ "_id" : ObjectId("61cacb99df4a456790685339"), "name" : "axu", "surname" : "pandya", "id" : 5 }
+{ "_id" : ObjectId("61cadab4df4a45679068533a"), "name" : "devarsh", "surname" : "chauhan", "is" : 1 }
+> ^C
+bye
+addweb@LP-59:~$ db.createCollection('admin')
+bash: syntax error near unexpected token `'admin''
+addweb@LP-59:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("210633c6-d477-4a2f-9059-3446f34480de") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-12-28T13:17:48.969+0530 I STORAGE  [initandlisten] 
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-28T13:17:51.798+0530 I CONTROL  [initandlisten] 
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] 
+> db.createColection('admin')
+2021-12-28T15:10:00.408+0530 E QUERY    [thread1] TypeError: db.createColection is not a function :
+@(shell):1:1
+> db
+test
+> use addweb
+switched to db addweb
+> db
+addweb
+> db.createCollection
+function (name, opt) {
+        var options = opt || {};
+
+        // We have special handling for the 'flags' field, and provide sugar for specific flags. If
+        // the user specifies any flags we send the field in the command. Otherwise, we leave it
+        // blank and use the server's defaults.
+        var sendFlags = false;
+        var flags = 0;
+        if (options.usePowerOf2Sizes != undefined) {
+            print(
+                "WARNING: The 'usePowerOf2Sizes' flag is ignored in 3.0 and higher as all MMAPv1 " +
+                "collections use fixed allocation sizes unless the 'noPadding' flag is specified");
+
+            sendFlags = true;
+            if (options.usePowerOf2Sizes) {
+                flags |= 1;  // Flag_UsePowerOf2Sizes
+            }
+            delete options.usePowerOf2Sizes;
+        }
+        if (options.noPadding != undefined) {
+            sendFlags = true;
+            if (options.noPadding) {
+                flags |= 2;  // Flag_NoPadding
+            }
+            delete options.noPadding;
+        }
+
+        // New flags must be added above here.
+        if (sendFlags) {
+            if (options.flags != undefined)
+                throw Error("Can't set 'flags' with either 'usePowerOf2Sizes' or 'noPadding'");
+            options.flags = flags;
+        }
+
+        var cmd = {create: name};
+        Object.extend(cmd, options);
+
+        return this._dbCommand(cmd);
+    }
+> db.createCollection('admin')
+{ "ok" : 1 }
+> show collection
+2021-12-28T15:10:53.419+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collections
+admin
+register
+> db.admin.insert({'id':'1','name':'devarsh','enail':'d@gmail,com','pass':'devarsh'})
+WriteResult({ "nInserted" : 1 })
+> db.admin.find()
+{ "_id" : ObjectId("61cadc256fef97127227acf2"), "id" : "1", "name" : "devarsh", "enail" : "d@gmail,com", "pass" : "devarsh" }
+> db.admin.insert({'id':'2','name':'namo','email':'namo@gmai.com','pass':'namonamo'})
+WriteResult({ "nInserted" : 1 })
+> db.admin.insert({'id':'3','name':'banny','enail':'bunny@gmail,com','pass':'bunny'})
+WriteResult({ "nInserted" : 1 })
+> db.admin.insert({'id':'4','name':'vimal','enail':'vimal@gmail,com','pass':'viml'})
+WriteResult({ "nInserted" : 1 })
+> db.admin.insert({'id':'5','name':'kinjal','enail':'kinjal@gmail,com','pass':'kinjal'})
+WriteResult({ "nInserted" : 1 })
+> db.admin.find()
+{ "_id" : ObjectId("61cadc256fef97127227acf2"), "id" : "1", "name" : "devarsh", "enail" : "d@gmail,com", "pass" : "devarsh" }
+{ "_id" : ObjectId("61cadc8e6fef97127227acf3"), "id" : "2", "name" : "namo", "email" : "namo@gmai.com", "pass" : "namonamo" }
+{ "_id" : ObjectId("61cadcb26fef97127227acf4"), "id" : "3", "name" : "banny", "enail" : "bunny@gmail,com", "pass" : "bunny" }
+{ "_id" : ObjectId("61cadcc86fef97127227acf5"), "id" : "4", "name" : "vimal", "enail" : "vimal@gmail,com", "pass" : "viml" }
+{ "_id" : ObjectId("61cadce46fef97127227acf6"), "id" : "5", "name" : "kinjal", "enail" : "kinjal@gmail,com", "pass" : "kinjal" }
+> db.admin.insertMany([{'id':'6','name':'vansh','enail':'vansh@gmail,com','pass':'vansh'},{'id':'7','name':'simran','enail':'simran@gmail,com','pass':'simran'},{'id':'8','name':'rohit','enail':'rohit@gmail,com','pass':'rohit'},{'id':'9','name':'bapu','enail':'bapu@gmail,com','pass':'bapu'},{'id':'10','name':'riya','email':'riya@gmail,com','pass':'riya'}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("61cade806fef97127227acf7"),
+		ObjectId("61cade806fef97127227acf8"),
+		ObjectId("61cade806fef97127227acf9"),
+		ObjectId("61cade806fef97127227acfa"),
+		ObjectId("61cade806fef97127227acfb")
+	]
+}
+> db.admin.find()
+{ "_id" : ObjectId("61cadc256fef97127227acf2"), "id" : "1", "name" : "devarsh", "enail" : "d@gmail,com", "pass" : "devarsh" }
+{ "_id" : ObjectId("61cadc8e6fef97127227acf3"), "id" : "2", "name" : "namo", "email" : "namo@gmai.com", "pass" : "namonamo" }
+{ "_id" : ObjectId("61cadcb26fef97127227acf4"), "id" : "3", "name" : "banny", "enail" : "bunny@gmail,com", "pass" : "bunny" }
+{ "_id" : ObjectId("61cadcc86fef97127227acf5"), "id" : "4", "name" : "vimal", "enail" : "vimal@gmail,com", "pass" : "viml" }
+{ "_id" : ObjectId("61cadce46fef97127227acf6"), "id" : "5", "name" : "kinjal", "enail" : "kinjal@gmail,com", "pass" : "kinjal" }
+{ "_id" : ObjectId("61cade806fef97127227acf7"), "id" : "6", "name" : "vansh", "enail" : "vansh@gmail,com", "pass" : "vansh" }
+{ "_id" : ObjectId("61cade806fef97127227acf8"), "id" : "7", "name" : "simran", "enail" : "simran@gmail,com", "pass" : "simran" }
+{ "_id" : ObjectId("61cade806fef97127227acf9"), "id" : "8", "name" : "rohit", "enail" : "rohit@gmail,com", "pass" : "rohit" }
+{ "_id" : ObjectId("61cade806fef97127227acfa"), "id" : "9", "name" : "bapu", "enail" : "bapu@gmail,com", "pass" : "bapu" }
+{ "_id" : ObjectId("61cade806fef97127227acfb"), "id" : "10", "name" : "riya", "email" : "riya@gmail,com", "pass" : "riya" }
+> ^C
+bye
+addweb@LP-59:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("5837832a-2f92-4081-afb2-f950605c2396") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-12-28T13:17:48.969+0530 I STORAGE  [initandlisten] 
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-28T13:17:48.970+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-28T13:17:51.798+0530 I CONTROL  [initandlisten] 
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-28T13:17:51.799+0530 I CONTROL  [initandlisten] 
+> db
+test
+> use addweb
+switched to db addweb
+> db
+addweb
+> show collections
+admin
+register
+> db.createCollection('shop')
+{ "ok" : 1 }
+> show collections
+admin
+register
+shop
+> db.shop.insert({'id':'1','name':'d footwear','city':'idar'})
+WriteResult({ "nInserted" : 1 })
+> > db.admin.find()
+2021-12-28T15:28:57.028+0530 E QUERY    [thread1] SyntaxError: expected expression, got '>' @(shell):1:0
+> { "_id" : ObjectId("61cadc256fef97127227acf2"), "id" : "1", "name" : "devarsh", "enail" : "d@gmail,com", "pass" : "devarsh" }
+2021-12-28T15:28:57.031+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cadc8e6fef97127227acf3"), "id" : "2", "name" : "namo", "email" : "namo@gmai.com", "pass" : "namonamo" }
+2021-12-28T15:28:57.033+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cadcb26fef97127227acf4"), "id" : "3", "name" : "banny", "enail" : "bunny@gmail,com", "pass" : "bunny" }
+2021-12-28T15:28:57.035+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cadcc86fef97127227acf5"), "id" : "4", "name" : "vimal", "enail" : "vimal@gmail,com", "pass" : "viml" }
+2021-12-28T15:28:57.038+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cadce46fef97127227acf6"), "id" : "5", "name" : "kinjal", "enail" : "kinjal@gmail,com", "pass" : "kinjal" }
+2021-12-28T15:28:57.040+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cade806fef97127227acf7"), "id" : "6", "name" : "vansh", "enail" : "vansh@gmail,com", "pass" : "vansh" }
+2021-12-28T15:28:57.042+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cade806fef97127227acf8"), "id" : "7", "name" : "simran", "enail" : "simran@gmail,com", "pass" : "simran" }
+2021-12-28T15:28:57.044+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cade806fef97127227acf9"), "id" : "8", "name" : "rohit", "enail" : "rohit@gmail,com", "pass" : "rohit" }
+2021-12-28T15:28:57.046+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cade806fef97127227acfa"), "id" : "9", "name" : "bapu", "enail" : "bapu@gmail,com", "pass" : "bapu" }
+2021-12-28T15:28:57.047+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> { "_id" : ObjectId("61cade806fef97127227acfb"), "id" : "10", "name" : "riya", "email" : "riya@gmail,com", "pass" : "riya" }
+2021-12-28T15:28:57.048+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:8
+> db.shop.insert({'id':'2','name':'bangal store','city':'khedbrahma'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'3','name':'krishna swets','city':'ahmedabad'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'4','name':'astodia icecreame','city':'ahmedabad'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'5','name':'trupti icecreame','city':'gandhinagar'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'6','name':'bhanusali collection','city':'khed'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'7','name':'arvind bhajiya','city':'vadali'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'8','name':'ambar soni','city':'idar'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'9','name':'apna shop','city':mehsana'})
+2021-12-28T15:32:27.512+0530 E QUERY    [thread1] SyntaxError: unterminated string literal @(shell):1:58
+> db.shop.insert({'id':'9','name':'apna shop','city':'mehsana'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.insert({'id':'10','name':'soni hasmukh','city':'anand'})
+WriteResult({ "nInserted" : 1 })
+> db.shop.find()
+{ "_id" : ObjectId("61cadfd21f0056607098333c"), "id" : "1", "name" : "d footwear", "city" : "idar" }
+{ "_id" : ObjectId("61cae0141f0056607098333d"), "id" : "2", "name" : "bangal store", "city" : "khedbrahma" }
+{ "_id" : ObjectId("61cae0291f0056607098333e"), "id" : "3", "name" : "krishna swets", "city" : "ahmedabad" }
+{ "_id" : ObjectId("61cae0411f0056607098333f"), "id" : "4", "name" : "astodia icecreame", "city" : "ahmedabad" }
+{ "_id" : ObjectId("61cae0651f00566070983340"), "id" : "5", "name" : "trupti icecreame", "city" : "gandhinagar" }
+{ "_id" : ObjectId("61cae07e1f00566070983341"), "id" : "6", "name" : "bhanusali collection", "city" : "khed" }
+{ "_id" : ObjectId("61cae0931f00566070983342"), "id" : "7", "name" : "arvind bhajiya", "city" : "vadali" }
+{ "_id" : ObjectId("61cae0a21f00566070983343"), "id" : "8", "name" : "ambar soni", "city" : "idar" }
+{ "_id" : ObjectId("61cae0ba1f00566070983344"), "id" : "9", "name" : "apna shop", "city" : "mehsana" }
+{ "_id" : ObjectId("61cae0d61f00566070983345"), "id" : "10", "name" : "soni hasmukh", "city" : "anand" }
+> db.createCollection('category')
+{ "ok" : 1 }
+> db
+addweb
+> show collections
+admin
+category
+register
+shop
+> db.category.insertMany([{'cat_id':'1','cat_name':'man'},{'cat_id':'2','cat_name':'female'},{'cat_id':'3','cat_name':'child'},{'cat_id':'4','cat_name':'kitchan'}.{'cat_id':'5','cat_name':'toys'},{'cat_id':'6','cat_name':'furnicher'},{'cat_id':'7','cat_name':'electronics'},{'cat_id':'8','cat_name':'mobile'},{'cat_id':'9','cat_name':'wireless'},{'cat_id':'10','cat_name':'gitar'}])
+2021-12-28T15:47:07.070+0530 E QUERY    [thread1] SyntaxError: missing name after . operator @(shell):1:161
+> db.category.insert({'cat_id':'1','cat_name':'man'}})
+2021-12-28T15:49:04.078+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:50
+> show collections
+admin
+category
+register
+shop
+> db.category.insert({'cat_id':'1','cat_name':'man'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'2','cat_name':'female'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'3','cat_name':'hildren'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'4','cat_name':'toys'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'5','cat_name':'kitchen'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'6','cat_name':'furnicher'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'7','cat_name':'electronics'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'8','cat_name':'mobile'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'9','cat_name':'machine'})
+WriteResult({ "nInserted" : 1 })
+> db.category.insert({'cat_id':'10','cat_name':'gitar'})
+WriteResult({ "nInserted" : 1 })
+> show.category.info()
+2021-12-28T15:52:31.910+0530 E QUERY    [thread1] ReferenceError: show is not defined :
+@(shell):1:1
+> show.category.find()
+2021-12-28T15:52:42.298+0530 E QUERY    [thread1] ReferenceError: show is not defined :
+@(shell):1:1
+> db.category.find()
+{ "_id" : ObjectId("61cae4d51f00566070983346"), "cat_id" : "1", "cat_name" : "man" }
+{ "_id" : ObjectId("61cae4de1f00566070983347"), "cat_id" : "2", "cat_name" : "female" }
+{ "_id" : ObjectId("61cae4e71f00566070983348"), "cat_id" : "3", "cat_name" : "hildren" }
+{ "_id" : ObjectId("61cae4f61f00566070983349"), "cat_id" : "4", "cat_name" : "toys" }
+{ "_id" : ObjectId("61cae4fd1f0056607098334a"), "cat_id" : "5", "cat_name" : "kitchen" }
+{ "_id" : ObjectId("61cae50c1f0056607098334b"), "cat_id" : "6", "cat_name" : "furnicher" }
+{ "_id" : ObjectId("61cae5251f0056607098334c"), "cat_id" : "7", "cat_name" : "electronics" }
+{ "_id" : ObjectId("61cae53e1f0056607098334d"), "cat_id" : "8", "cat_name" : "mobile" }
+{ "_id" : ObjectId("61cae54c1f0056607098334e"), "cat_id" : "9", "cat_name" : "machine" }
+{ "_id" : ObjectId("61cae5591f0056607098334f"), "cat_id" : "10", "cat_name" : "gitar" }
+> show collections
+admin
+category
+register
+shop
+> db.createColection('sub_cat')
+2021-12-28T15:54:09.866+0530 E QUERY    [thread1] TypeError: db.createColection is not a function :
+@(shell):1:1
+> db.createCollection('sub_cat')
+{ "ok" : 1 }
+> show collections
+admin
+category
+register
+shop
+sub_cat
+> db.sub_cat.insert({'sub_cat_is':'1','sub_cat_name'})
+2021-12-28T15:56:11.655+0530 E QUERY    [thread1] SyntaxError: missing : after property id @(shell):1:50
+> db.sub_cat.insert({'sub_cat_id':'1','sub_cat_name':'shoes'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'2','sub_cat_name':'sandel'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'3','sub_cat_name':'sliper'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'4','sub_cat_name':'cars'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'5','sub_cat_name':'bike'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'6','sub_cat_name':'oppo'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'7','sub_cat_name':'apple'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'8','sub_cat_name':'samsung'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'9','sub_cat_name':'humbel'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.insert({'sub_cat_id':'10','sub_cat_name':'sony'})
+WriteResult({ "nInserted" : 1 })
+> db.sub_cat.find()
+{ "_id" : ObjectId("61cae65d1f00566070983350"), "sub_cat_id" : "1", "sub_cat_name" : "shoes" }
+{ "_id" : ObjectId("61cae6661f00566070983351"), "sub_cat_id" : "2", "sub_cat_name" : "sandel" }
+{ "_id" : ObjectId("61cae6701f00566070983352"), "sub_cat_id" : "3", "sub_cat_name" : "sliper" }
+{ "_id" : ObjectId("61cae6d51f00566070983353"), "sub_cat_id" : "4", "sub_cat_name" : "cars" }
+{ "_id" : ObjectId("61cae6e01f00566070983354"), "sub_cat_id" : "5", "sub_cat_name" : "bike" }
+{ "_id" : ObjectId("61cae6f41f00566070983355"), "sub_cat_id" : "6", "sub_cat_name" : "oppo" }
+{ "_id" : ObjectId("61cae6fb1f00566070983356"), "sub_cat_id" : "7", "sub_cat_name" : "apple" }
+{ "_id" : ObjectId("61cae7101f00566070983357"), "sub_cat_id" : "8", "sub_cat_name" : "samsung" }
+{ "_id" : ObjectId("61cae71a1f00566070983358"), "sub_cat_id" : "9", "sub_cat_name" : "humbel" }
+{ "_id" : ObjectId("61cae7241f00566070983359"), "sub_cat_id" : "10", "sub_cat_name" : "sony" }
+> db
+addweb
+> show collecions
+2021-12-28T16:01:29.895+0530 E QUERY    [thread1] Error: don't know how to show [collecions] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collection
+2021-12-28T16:01:36.962+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collections
+admin
+category
+register
+shop
+sub_cat
+> db.createColection('student')
+2021-12-28T16:01:53.965+0530 E QUERY    [thread1] TypeError: db.createColection is not a function :
+@(shell):1:1
+> db.createCollection('student')
+{ "ok" : 1 }
+> shoe collections
+2021-12-28T16:02:09.590+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:5
+> show collections
+admin
+category
+register
+shop
+student
+sub_cat
+> db.student.insert({'s_id':1,'s_name':'devarsh chauhan','s_roll':'11'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':2,'s_name':'vishi chauhan','s_roll':'12'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':3,'s_name':'harsh chauhan','s_roll':'13'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':4,'s_name':'rakesh chauhan','s_roll':'14'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':5,'s_name':'nilam patel','s_roll':'15'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':6,'s_name':'gopal patel','s_roll':'16'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':7,'s_name':'tejash patel','s_roll':'17'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':8,'s_name':'bankim patel','s_roll':'18'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':9,'s_name':'yuvrajsinh chauhan','s_roll':'19'})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({'s_id':10,'s_name':'niyati chauhan','s_roll':'20'})
+WriteResult({ "nInserted" : 1 })
+> 
+> db.student.find()
+{ "_id" : ObjectId("61cae88b1f0056607098335a"), "s_id" : 1, "s_name" : "devarsh chauhan", "s_roll" : "11" }
+{ "_id" : ObjectId("61cae8971f0056607098335b"), "s_id" : 2, "s_name" : "vishi chauhan", "s_roll" : "12" }
+{ "_id" : ObjectId("61cae8a41f0056607098335c"), "s_id" : 3, "s_name" : "harsh chauhan", "s_roll" : "13" }
+{ "_id" : ObjectId("61cae8af1f0056607098335d"), "s_id" : 4, "s_name" : "rakesh chauhan", "s_roll" : "14" }
+{ "_id" : ObjectId("61cae8c01f0056607098335e"), "s_id" : 5, "s_name" : "nilam patel", "s_roll" : "15" }
+{ "_id" : ObjectId("61cae8cc1f0056607098335f"), "s_id" : 6, "s_name" : "gopal patel", "s_roll" : "16" }
+{ "_id" : ObjectId("61cae8da1f00566070983360"), "s_id" : 7, "s_name" : "tejash patel", "s_roll" : "17" }
+{ "_id" : ObjectId("61cae8ef1f00566070983361"), "s_id" : 8, "s_name" : "bankim patel", "s_roll" : "18" }
+{ "_id" : ObjectId("61cae9061f00566070983362"), "s_id" : 9, "s_name" : "yuvrajsinh chauhan", "s_roll" : "19" }
+{ "_id" : ObjectId("61cae9131f00566070983363"), "s_id" : 10, "s_name" : "niyati chauhan", "s_roll" : "20" }
+> show collectios
+2021-12-28T16:11:16.366+0530 E QUERY    [thread1] Error: don't know how to show [collectios] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collections
+admin
+category
+register
+shop
+student
+sub_cat
+> db.createCollection.('employee')
+2021-12-28T16:12:22.194+0530 E QUERY    [thread1] SyntaxError: missing name after . operator @(shell):1:20
+> db.createCollection('employee')
+{ "ok" : 1 }
+> show collections
+admin
+category
+employee
+register
+shop
+student
+sub_cat
+> db.employee.insert({'e_id':1,'e_name':'menil','e_pass':'menil'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':2,'e_name':'vitrag','e_pass':'vito'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':3,'e_name':'anjali','e_pass':'anju'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':4,'e_name':'vaibhavi','e_pass':'vaibhu'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':5,'e_name':'navaz','e_pass':'navlo'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':6,'e_name':'sirajj','e_pass':'shiro'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':7,'e_name':'bhavesh','e_pass':'bhavo'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':8,'e_name':'nikki','e_pass':'niki'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':9,'e_name':'ronak','e_pass':'ronko'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.insert({'e_id':10,'e_name':'shrikant','e_pass':'shrikant'})
+WriteResult({ "nInserted" : 1 })
+> db.employee.find()
+{ "_id" : ObjectId("61caea991f00566070983364"), "e_id" : 1, "e_name" : "menil", "e_pass" : "menil" }
+{ "_id" : ObjectId("61caeaaa1f00566070983365"), "e_id" : 2, "e_name" : "vitrag", "e_pass" : "vito" }
+{ "_id" : ObjectId("61caeab41f00566070983366"), "e_id" : 3, "e_name" : "anjali", "e_pass" : "anju" }
+{ "_id" : ObjectId("61caeac21f00566070983367"), "e_id" : 4, "e_name" : "vaibhavi", "e_pass" : "vaibhu" }
+{ "_id" : ObjectId("61caead21f00566070983368"), "e_id" : 5, "e_name" : "navaz", "e_pass" : "navlo" }
+{ "_id" : ObjectId("61caeae41f00566070983369"), "e_id" : 6, "e_name" : "sirajj", "e_pass" : "shiro" }
+{ "_id" : ObjectId("61caeaf11f0056607098336a"), "e_id" : 7, "e_name" : "bhavesh", "e_pass" : "bhavo" }
+{ "_id" : ObjectId("61caeaff1f0056607098336b"), "e_id" : 8, "e_name" : "nikki", "e_pass" : "niki" }
+{ "_id" : ObjectId("61caeb0b1f0056607098336c"), "e_id" : 9, "e_name" : "ronak", "e_pass" : "ronko" }
+{ "_id" : ObjectId("61caeb1d1f0056607098336d"), "e_id" : 10, "e_name" : "shrikant", "e_pass" : "shrikant" }
+> show collections
+admin
+category
+employee
+register
+shop
+student
+sub_cat
+> db.createCollection('feedback')
+{ "ok" : 1 }
+> show collections
+admin
+category
+employee
+feedback
+register
+shop
+student
+sub_cat
+> db.feedback.insert({'f_is':1,'email':'b@gmail.com','feedback':'now right'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':2,'email':'n@gmail.com','feedback':'right now you are verybad '})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':3,'email':'p@gmail.com','feedback':'product is very diffective  '})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':4,'email':'l@gmail.com','feedback':'plz tell me this prodyct'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':5,'email':'d@gmail.com','feedback':'plz remove from me in this collection '})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':6,'email':'j@gmail.com','feedback':'this product is very much'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':7,'email':'e@gmail.com','feedback':'that is a most product in this time'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':8,'email':'h@gmail.com','feedback':'give me your contact'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':9,'email':'q@gmail.com','feedback':'tell me this produuct id plz'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.insert({'f_is':10,'email':'tk@gmail.com','feedback':'this is lovoly one of the best product'})
+WriteResult({ "nInserted" : 1 })
+> db.feedback.find()
+{ "_id" : ObjectId("61caebb41f0056607098336e"), "f_is" : 1, "email" : "b@gmail.com", "feedback" : "now right" }
+{ "_id" : ObjectId("61caebcc1f0056607098336f"), "f_is" : 2, "email" : "n@gmail.com", "feedback" : "right now you are verybad " }
+{ "_id" : ObjectId("61caebde1f00566070983370"), "f_is" : 3, "email" : "p@gmail.com", "feedback" : "product is very diffective  " }
+{ "_id" : ObjectId("61caebf21f00566070983371"), "f_is" : 4, "email" : "l@gmail.com", "feedback" : "plz tell me this prodyct" }
+{ "_id" : ObjectId("61caec071f00566070983372"), "f_is" : 5, "email" : "d@gmail.com", "feedback" : "plz remove from me in this collection " }
+{ "_id" : ObjectId("61caec1e1f00566070983373"), "f_is" : 6, "email" : "j@gmail.com", "feedback" : "this product is very much" }
+{ "_id" : ObjectId("61caec441f00566070983374"), "f_is" : 7, "email" : "e@gmail.com", "feedback" : "that is a most product in this time" }
+{ "_id" : ObjectId("61caec5e1f00566070983375"), "f_is" : 8, "email" : "h@gmail.com", "feedback" : "give me your contact" }
+{ "_id" : ObjectId("61caec721f00566070983376"), "f_is" : 9, "email" : "q@gmail.com", "feedback" : "tell me this produuct id plz" }
+{ "_id" : ObjectId("61caec911f00566070983377"), "f_is" : 10, "email" : "tk@gmail.com", "feedback" : "this is lovoly one of the best product" }
+> show collections
+admin
+category
+employee
+feedback
+register
+shop
+student
+sub_cat
+> db.createCollection('customer')
+{ "ok" : 1 }
+> show collections
+admin
+category
+customer
+employee
+feedback
+register
+shop
+student
+sub_cat
+> db.customer.insert({'c_id':1,'cust_name':'rohit','cust_mobile':1234567890})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':2,'cust_name':'bhupendrabhai','cust_mobile':345})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':3,'cust_name':'anjeshbhbai','cust_mobile':0878878987})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':4,'cust_name':'rajubhai','cust_mobile':8172637367})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':5,'cust_name':'saurabh','cust_mobile':4356272817})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':6,'cust_name':'sanjay','cust_mobile':909988787})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':7,'cust_name':'kanubhai','cust_mobile':7888776656})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':8,'cust_name':'kailashbhai','cust_mobile':98654324566})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':9,'cust_name':'gansshyambhai ','cust_mobile':89865325686})
+WriteResult({ "nInserted" : 1 })
+> db.customer.insert({'c_id':10,'cust_name':'popatbhai  ','cust_mobile':98765686})
+WriteResult({ "nInserted" : 1 })
+> db.customer.find()
+{ "_id" : ObjectId("61caed401f00566070983378"), "c_id" : 1, "cust_name" : "rohit", "cust_mobile" : 1234567890 }
+{ "_id" : ObjectId("61caed541f00566070983379"), "c_id" : 2, "cust_name" : "bhupendrabhai", "cust_mobile" : 345 }
+{ "_id" : ObjectId("61caed681f0056607098337a"), "c_id" : 3, "cust_name" : "anjeshbhbai", "cust_mobile" : 878878987 }
+{ "_id" : ObjectId("61caed781f0056607098337b"), "c_id" : 4, "cust_name" : "rajubhai", "cust_mobile" : 8172637367 }
+{ "_id" : ObjectId("61caed901f0056607098337c"), "c_id" : 5, "cust_name" : "saurabh", "cust_mobile" : 4356272817 }
+{ "_id" : ObjectId("61caed9e1f0056607098337d"), "c_id" : 6, "cust_name" : "sanjay", "cust_mobile" : 909988787 }
+{ "_id" : ObjectId("61caedab1f0056607098337e"), "c_id" : 7, "cust_name" : "kanubhai", "cust_mobile" : 7888776656 }
+{ "_id" : ObjectId("61caedba1f0056607098337f"), "c_id" : 8, "cust_name" : "kailashbhai", "cust_mobile" : 98654324566 }
+{ "_id" : ObjectId("61caedcd1f00566070983380"), "c_id" : 9, "cust_name" : "gansshyambhai ", "cust_mobile" : 89865325686 }
+{ "_id" : ObjectId("61caede31f00566070983381"), "c_id" : 10, "cust_name" : "popatbhai  ", "cust_mobile" : 98765686 }
+> show collections
+admin
+category
+customer
+employee
+feedback
+register
+shop
+student
+sub_cat
+> db.create.collection('seller')
+2021-12-28T16:30:36.667+0530 E QUERY    [thread1] TypeError: db.create.collection is not a function :
+@(shell):1:1
+> db.create.collection('seller')
+2021-12-28T16:31:02.622+0530 E QUERY    [thread1] TypeError: db.create.collection is not a function :
+@(shell):1:1
+> db.createCollection('seller')
+{ "ok" : 1 }
+> shoe collections
+2021-12-28T16:31:20.296+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:5
+> show collections
+admin
+category
+customer
+employee
+feedback
+register
+seller
+shop
+student
+sub_cat
+> db.seller.insert({'sid':1,'sname':'manish','scity':'amd'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':2,'sname':'devarh','scity':'baroda'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':3,'sname':'devu','scity':'surat'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':4,'sname':'nikhil','scity':'jaipur'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':5,'sname':'jaydeep','scity':'rajkot'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':6,'sname':'nirmohi','scity':'delhi'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':7,'sname':'bhavesh','scity':'dehradun'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':8,'sname':'mango','scity':'jodhpur'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':9,'sname':'harishbhai','scity':'jothpur'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.insert({'sid':10,'sname':'naranlalaji','scity':'udaipur'})
+WriteResult({ "nInserted" : 1 })
+> db.seller.find()
+{ "_id" : ObjectId("61caeec01f00566070983382"), "sid" : 1, "sname" : "manish", "scity" : "amd" }
+{ "_id" : ObjectId("61caeece1f00566070983383"), "sid" : 2, "sname" : "devarh", "scity" : "baroda" }
+{ "_id" : ObjectId("61caeedc1f00566070983384"), "sid" : 3, "sname" : "devu", "scity" : "surat" }
+{ "_id" : ObjectId("61caeeea1f00566070983385"), "sid" : 4, "sname" : "nikhil", "scity" : "jaipur" }
+{ "_id" : ObjectId("61caeef71f00566070983386"), "sid" : 5, "sname" : "jaydeep", "scity" : "rajkot" }
+{ "_id" : ObjectId("61caef041f00566070983387"), "sid" : 6, "sname" : "nirmohi", "scity" : "delhi" }
+{ "_id" : ObjectId("61caef1a1f00566070983388"), "sid" : 7, "sname" : "bhavesh", "scity" : "dehradun" }
+{ "_id" : ObjectId("61caef2b1f00566070983389"), "sid" : 8, "sname" : "mango", "scity" : "jodhpur" }
+{ "_id" : ObjectId("61caef391f0056607098338a"), "sid" : 9, "sname" : "harishbhai", "scity" : "jothpur" }
+{ "_id" : ObjectId("61caef481f0056607098338b"), "sid" : 10, "sname" : "naranlalaji", "scity" : "udaipur" }
+> show collections
+admin
+category
+customer
+employee
+feedback
+register
+seller
+shop
+student
+sub_cat
+> db
+addweb
+> db.seller.find()
+{ "_id" : ObjectId("61caeec01f00566070983382"), "sid" : 1, "sname" : "manish", "scity" : "amd" }
+{ "_id" : ObjectId("61caeece1f00566070983383"), "sid" : 2, "sname" : "devarh", "scity" : "baroda" }
+{ "_id" : ObjectId("61caeedc1f00566070983384"), "sid" : 3, "sname" : "devu", "scity" : "surat" }
+{ "_id" : ObjectId("61caeeea1f00566070983385"), "sid" : 4, "sname" : "nikhil", "scity" : "jaipur" }
+{ "_id" : ObjectId("61caeef71f00566070983386"), "sid" : 5, "sname" : "jaydeep", "scity" : "rajkot" }
+{ "_id" : ObjectId("61caef041f00566070983387"), "sid" : 6, "sname" : "nirmohi", "scity" : "delhi" }
+{ "_id" : ObjectId("61caef1a1f00566070983388"), "sid" : 7, "sname" : "bhavesh", "scity" : "dehradun" }
+{ "_id" : ObjectId("61caef2b1f00566070983389"), "sid" : 8, "sname" : "mango", "scity" : "jodhpur" }
+{ "_id" : ObjectId("61caef391f0056607098338a"), "sid" : 9, "sname" : "harishbhai", "scity" : "jothpur" }
+{ "_id" : ObjectId("61caef481f0056607098338b"), "sid" : 10, "sname" : "naranlalaji", "scity" : "udaipur" }
+> db.seller.find({'sname':'manish'},{'sid':1,'sname':'thakkar','scity':'surendranagar'},{upsert:true})
+{ "_id" : ObjectId("61caeec01f00566070983382"), "sid" : 1, "sname" : "manish", "scity" : "amd" }
+> db.seller.find()
+{ "_id" : ObjectId("61caeec01f00566070983382"), "sid" : 1, "sname" : "manish", "scity" : "amd" }
+{ "_id" : ObjectId("61caeece1f00566070983383"), "sid" : 2, "sname" : "devarh", "scity" : "baroda" }
+{ "_id" : ObjectId("61caeedc1f00566070983384"), "sid" : 3, "sname" : "devu", "scity" : "surat" }
+{ "_id" : ObjectId("61caeeea1f00566070983385"), "sid" : 4, "sname" : "nikhil", "scity" : "jaipur" }
+{ "_id" : ObjectId("61caeef71f00566070983386"), "sid" : 5, "sname" : "jaydeep", "scity" : "rajkot" }
+{ "_id" : ObjectId("61caef041f00566070983387"), "sid" : 6, "sname" : "nirmohi", "scity" : "delhi" }
+{ "_id" : ObjectId("61caef1a1f00566070983388"), "sid" : 7, "sname" : "bhavesh", "scity" : "dehradun" }
+{ "_id" : ObjectId("61caef2b1f00566070983389"), "sid" : 8, "sname" : "mango", "scity" : "jodhpur" }
+{ "_id" : ObjectId("61caef391f0056607098338a"), "sid" : 9, "sname" : "harishbhai", "scity" : "jothpur" }
+{ "_id" : ObjectId("61caef481f0056607098338b"), "sid" : 10, "sname" : "naranlalaji", "scity" : "udaipur" }
+> 
+
+
+
 	   ------------------------------   database addweb   --------------------------------
 _______________________________________________________________________________________________________
 
