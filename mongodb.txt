@@ -1,0 +1,184 @@
+
+	   ------------------------------   database addweb   --------------------------------
+_______________________________________________________________________________________________________
+
+1) table register......
+
+> db.register.find()
+{ "_id" : ObjectId("61cac930df4a45679068532b"), "name" : "devarsh", "surname" : "chauhan", "id" : 1 }
+{ "_id" : ObjectId("61cac987df4a45679068532c"), "name" : "yatri", "surname" : "chauhan", "id" : 2 }
+{ "_id" : ObjectId("61cac991df4a45679068532d"), "name" : "brijesh", "surname" : "chauhan", "id" : 3 }
+{ "_id" : ObjectId("61cac99edf4a45679068532e"), "name" : "bhaumik", "surname" : "chauhan", "id" : 4 }
+{ "_id" : ObjectId("61cac9aadf4a45679068532f"), "name" : "tirth", "surname" : "chauhan", "id" : 5 }
+{ "_id" : ObjectId("61cacabfdf4a456790685330"), "name" : "druvik", "surname" : "bhatiya", "id" : 6 }
+{ "_id" : ObjectId("61cacabfdf4a456790685331"), "name" : "menil", "surname" : "kothari", "id" : 7 }
+{ "_id" : ObjectId("61cacabfdf4a456790685332"), "name" : "vimal", "surname" : "chauhan", "id" : 8 }
+{ "_id" : ObjectId("61cacabfdf4a456790685333"), "name" : "jay", "surname" : "bhanusali", "id" : 9 }
+{ "_id" : ObjectId("61cacabfdf4a456790685334"), "name" : "axu", "surname" : "pandya", "id" : 10 }
+{ "_id" : ObjectId("61cacb99df4a456790685335"), "name" : "druvik", "surname" : "bhatiya", "id" : 1 }
+{ "_id" : ObjectId("61cacb99df4a456790685336"), "name" : "menil", "surname" : "kothari", "id" : 2 }
+{ "_id" : ObjectId("61cacb99df4a456790685337"), "name" : "vimal", "surname" : "chauhan", "id" : 3 }
+{ "_id" : ObjectId("61cacb99df4a456790685338"), "name" : "jay", "surname" : "bhanusali", "id" : 4 }
+{ "_id" : ObjectId("61cacb99df4a456790685339"), "name" : "axu", "surname" : "pandya", "id" : 5 }
+{ "_id" : ObjectId("61cadab4df4a45679068533a"), "name" : "devarsh", "surname" : "chauhan", "is" : 1 }
+> ^C
+
+
+_________________________________________________________________________________________________________
+
+2) table admin.......
+
+> db.admin.find()
+{ "_id" : ObjectId("61cadc256fef97127227acf2"), "id" : "1", "name" : "devarsh", "enail" : "d@gmail,com", "pass" : "devarsh" }
+{ "_id" : ObjectId("61cadc8e6fef97127227acf3"), "id" : "2", "name" : "namo", "email" : "namo@gmai.com", "pass" : "namonamo" }
+{ "_id" : ObjectId("61cadcb26fef97127227acf4"), "id" : "3", "name" : "banny", "enail" : "bunny@gmail,com", "pass" : "bunny" }
+{ "_id" : ObjectId("61cadcc86fef97127227acf5"), "id" : "4", "name" : "vimal", "enail" : "vimal@gmail,com", "pass" : "viml" }
+{ "_id" : ObjectId("61cadce46fef97127227acf6"), "id" : "5", "name" : "kinjal", "enail" : "kinjal@gmail,com", "pass" : "kinjal" }
+{ "_id" : ObjectId("61cade806fef97127227acf7"), "id" : "6", "name" : "vansh", "enail" : "vansh@gmail,com", "pass" : "vansh" }
+{ "_id" : ObjectId("61cade806fef97127227acf8"), "id" : "7", "name" : "simran", "enail" : "simran@gmail,com", "pass" : "simran" }
+{ "_id" : ObjectId("61cade806fef97127227acf9"), "id" : "8", "name" : "rohit", "enail" : "rohit@gmail,com", "pass" : "rohit" }
+{ "_id" : ObjectId("61cade806fef97127227acfa"), "id" : "9", "name" : "bapu", "enail" : "bapu@gmail,com", "pass" : "bapu" }
+{ "_id" : ObjectId("61cade806fef97127227acfb"), "id" : "10", "name" : "riya", "email" : "riya@gmail,com", "pass" : "riya" }
+> 
+
+__________________________________________________________________________________________________________
+
+3) table shop.........
+
+> db.shop.find()
+{ "_id" : ObjectId("61cadfd21f0056607098333c"), "id" : "1", "name" : "d footwear", "city" : "idar" }
+{ "_id" : ObjectId("61cae0141f0056607098333d"), "id" : "2", "name" : "bangal store", "city" : "khedbrahma" }
+{ "_id" : ObjectId("61cae0291f0056607098333e"), "id" : "3", "name" : "krishna swets", "city" : "ahmedabad" }
+{ "_id" : ObjectId("61cae0411f0056607098333f"), "id" : "4", "name" : "astodia icecreame", "city" : "ahmedabad" }
+{ "_id" : ObjectId("61cae0651f00566070983340"), "id" : "5", "name" : "trupti icecreame", "city" : "gandhinagar" }
+{ "_id" : ObjectId("61cae07e1f00566070983341"), "id" : "6", "name" : "bhanusali collection", "city" : "khed" }
+{ "_id" : ObjectId("61cae0931f00566070983342"), "id" : "7", "name" : "arvind bhajiya", "city" : "vadali" }
+{ "_id" : ObjectId("61cae0a21f00566070983343"), "id" : "8", "name" : "ambar soni", "city" : "idar" }
+{ "_id" : ObjectId("61cae0ba1f00566070983344"), "id" : "9", "name" : "apna shop", "city" : "mehsana" }
+{ "_id" : ObjectId("61cae0d61f00566070983345"), "id" : "10", "name" : "soni hasmukh", "city" : "anand" }
+> 
+
+_____________________________________________________________________________________________________________
+
+4) table category.....
+
+> db.category.find()
+{ "_id" : ObjectId("61cae4d51f00566070983346"), "cat_id" : "1", "cat_name" : "man" }
+{ "_id" : ObjectId("61cae4de1f00566070983347"), "cat_id" : "2", "cat_name" : "female" }
+{ "_id" : ObjectId("61cae4e71f00566070983348"), "cat_id" : "3", "cat_name" : "hildren" }
+{ "_id" : ObjectId("61cae4f61f00566070983349"), "cat_id" : "4", "cat_name" : "toys" }
+{ "_id" : ObjectId("61cae4fd1f0056607098334a"), "cat_id" : "5", "cat_name" : "kitchen" }
+{ "_id" : ObjectId("61cae50c1f0056607098334b"), "cat_id" : "6", "cat_name" : "furnicher" }
+{ "_id" : ObjectId("61cae5251f0056607098334c"), "cat_id" : "7", "cat_name" : "electronics" }
+{ "_id" : ObjectId("61cae53e1f0056607098334d"), "cat_id" : "8", "cat_name" : "mobile" }
+{ "_id" : ObjectId("61cae54c1f0056607098334e"), "cat_id" : "9", "cat_name" : "machine" }
+{ "_id" : ObjectId("61cae5591f0056607098334f"), "cat_id" : "10", "cat_name" : "gitar" }
+> 
+
+_____________________________________________________________________________________________________________
+
+5) table sub_cat......
+
+> db.sub_cat.find()
+{ "_id" : ObjectId("61cae65d1f00566070983350"), "sub_cat_id" : "1", "sub_cat_name" : "shoes" }
+{ "_id" : ObjectId("61cae6661f00566070983351"), "sub_cat_id" : "2", "sub_cat_name" : "sandel" }
+{ "_id" : ObjectId("61cae6701f00566070983352"), "sub_cat_id" : "3", "sub_cat_name" : "sliper" }
+{ "_id" : ObjectId("61cae6d51f00566070983353"), "sub_cat_id" : "4", "sub_cat_name" : "cars" }
+{ "_id" : ObjectId("61cae6e01f00566070983354"), "sub_cat_id" : "5", "sub_cat_name" : "bike" }
+{ "_id" : ObjectId("61cae6f41f00566070983355"), "sub_cat_id" : "6", "sub_cat_name" : "oppo" }
+{ "_id" : ObjectId("61cae6fb1f00566070983356"), "sub_cat_id" : "7", "sub_cat_name" : "apple" }
+{ "_id" : ObjectId("61cae7101f00566070983357"), "sub_cat_id" : "8", "sub_cat_name" : "samsung" }
+{ "_id" : ObjectId("61cae71a1f00566070983358"), "sub_cat_id" : "9", "sub_cat_name" : "humbel" }
+{ "_id" : ObjectId("61cae7241f00566070983359"), "sub_cat_id" : "10", "sub_cat_name" : "sony" }
+> 
+
+_____________________________________________________________________________________________________________
+
+6) table student............
+
+> db.student.find()
+{ "_id" : ObjectId("61cae88b1f0056607098335a"), "s_id" : 1, "s_name" : "devarsh chauhan", "s_roll" : "11" }
+{ "_id" : ObjectId("61cae8971f0056607098335b"), "s_id" : 2, "s_name" : "vishi chauhan", "s_roll" : "12" }
+{ "_id" : ObjectId("61cae8a41f0056607098335c"), "s_id" : 3, "s_name" : "harsh chauhan", "s_roll" : "13" }
+{ "_id" : ObjectId("61cae8af1f0056607098335d"), "s_id" : 4, "s_name" : "rakesh chauhan", "s_roll" : "14" }
+{ "_id" : ObjectId("61cae8c01f0056607098335e"), "s_id" : 5, "s_name" : "nilam patel", "s_roll" : "15" }
+{ "_id" : ObjectId("61cae8cc1f0056607098335f"), "s_id" : 6, "s_name" : "gopal patel", "s_roll" : "16" }
+{ "_id" : ObjectId("61cae8da1f00566070983360"), "s_id" : 7, "s_name" : "tejash patel", "s_roll" : "17" }
+{ "_id" : ObjectId("61cae8ef1f00566070983361"), "s_id" : 8, "s_name" : "bankim patel", "s_roll" : "18" }
+{ "_id" : ObjectId("61cae9061f00566070983362"), "s_id" : 9, "s_name" : "yuvrajsinh chauhan", "s_roll" : "19" }
+{ "_id" : ObjectId("61cae9131f00566070983363"), "s_id" : 10, "s_name" : "niyati chauhan", "s_roll" : "20" }
+> 
+_____________________________________________________________________________________________________________
+
+7) table employee............
+
+> db.employee.find()
+{ "_id" : ObjectId("61caea991f00566070983364"), "e_id" : 1, "e_name" : "menil", "e_pass" : "menil" }
+{ "_id" : ObjectId("61caeaaa1f00566070983365"), "e_id" : 2, "e_name" : "vitrag", "e_pass" : "vito" }
+{ "_id" : ObjectId("61caeab41f00566070983366"), "e_id" : 3, "e_name" : "anjali", "e_pass" : "anju" }
+{ "_id" : ObjectId("61caeac21f00566070983367"), "e_id" : 4, "e_name" : "vaibhavi", "e_pass" : "vaibhu" }
+{ "_id" : ObjectId("61caead21f00566070983368"), "e_id" : 5, "e_name" : "navaz", "e_pass" : "navlo" }
+{ "_id" : ObjectId("61caeae41f00566070983369"), "e_id" : 6, "e_name" : "sirajj", "e_pass" : "shiro" }
+{ "_id" : ObjectId("61caeaf11f0056607098336a"), "e_id" : 7, "e_name" : "bhavesh", "e_pass" : "bhavo" }
+{ "_id" : ObjectId("61caeaff1f0056607098336b"), "e_id" : 8, "e_name" : "nikki", "e_pass" : "niki" }
+{ "_id" : ObjectId("61caeb0b1f0056607098336c"), "e_id" : 9, "e_name" : "ronak", "e_pass" : "ronko" }
+{ "_id" : ObjectId("61caeb1d1f0056607098336d"), "e_id" : 10, "e_name" : "shrikant", "e_pass" : "shrikant" }
+> 
+
+_______________________________________________________________________________________________________________
+
+8) tbale feedback........
+
+
+> db.feedback.find()
+{ "_id" : ObjectId("61caebb41f0056607098336e"), "f_is" : 1, "email" : "b@gmail.com", "feedback" : "now right" }
+{ "_id" : ObjectId("61caebcc1f0056607098336f"), "f_is" : 2, "email" : "n@gmail.com", "feedback" : "right now you are verybad " }
+{ "_id" : ObjectId("61caebde1f00566070983370"), "f_is" : 3, "email" : "p@gmail.com", "feedback" : "product is very diffective  " }
+{ "_id" : ObjectId("61caebf21f00566070983371"), "f_is" : 4, "email" : "l@gmail.com", "feedback" : "plz tell me this prodyct" }
+{ "_id" : ObjectId("61caec071f00566070983372"), "f_is" : 5, "email" : "d@gmail.com", "feedback" : "plz remove from me in this collection " }
+{ "_id" : ObjectId("61caec1e1f00566070983373"), "f_is" : 6, "email" : "j@gmail.com", "feedback" : "this product is very much" }
+{ "_id" : ObjectId("61caec441f00566070983374"), "f_is" : 7, "email" : "e@gmail.com", "feedback" : "that is a most product in this time" }
+{ "_id" : ObjectId("61caec5e1f00566070983375"), "f_is" : 8, "email" : "h@gmail.com", "feedback" : "give me your contact" }
+{ "_id" : ObjectId("61caec721f00566070983376"), "f_is" : 9, "email" : "q@gmail.com", "feedback" : "tell me this produuct id plz" }
+{ "_id" : ObjectId("61caec911f00566070983377"), "f_is" : 10, "email" : "tk@gmail.com", "feedback" : "this is lovoly one of the best product" }
+> 
+
+______________________________________________________________________________________________________________
+
+9) tbale customer....
+
+> db.customer.find()
+{ "_id" : ObjectId("61caed401f00566070983378"), "c_id" : 1, "cust_name" : "rohit", "cust_mobile" : 1234567890 }
+{ "_id" : ObjectId("61caed541f00566070983379"), "c_id" : 2, "cust_name" : "bhupendrabhai", "cust_mobile" : 345 }
+{ "_id" : ObjectId("61caed681f0056607098337a"), "c_id" : 3, "cust_name" : "anjeshbhbai", "cust_mobile" : 878878987 }
+{ "_id" : ObjectId("61caed781f0056607098337b"), "c_id" : 4, "cust_name" : "rajubhai", "cust_mobile" : 8172637367 }
+{ "_id" : ObjectId("61caed901f0056607098337c"), "c_id" : 5, "cust_name" : "saurabh", "cust_mobile" : 4356272817 }
+{ "_id" : ObjectId("61caed9e1f0056607098337d"), "c_id" : 6, "cust_name" : "sanjay", "cust_mobile" : 909988787 }
+{ "_id" : ObjectId("61caedab1f0056607098337e"), "c_id" : 7, "cust_name" : "kanubhai", "cust_mobile" : 7888776656 }
+{ "_id" : ObjectId("61caedba1f0056607098337f"), "c_id" : 8, "cust_name" : "kailashbhai", "cust_mobile" : 98654324566 }
+{ "_id" : ObjectId("61caedcd1f00566070983380"), "c_id" : 9, "cust_name" : "gansshyambhai ", "cust_mobile" : 89865325686 }
+{ "_id" : ObjectId("61caede31f00566070983381"), "c_id" : 10, "cust_name" : "popatbhai  ", "cust_mobile" : 98765686 }
+> 
+
+_______________________________________________________________________________________________________________
+
+10) table seller.....
+
+> db.seller.find()
+{ "_id" : ObjectId("61caeec01f00566070983382"), "sid" : 1, "sname" : "manish", "scity" : "amd" }
+{ "_id" : ObjectId("61caeece1f00566070983383"), "sid" : 2, "sname" : "devarh", "scity" : "baroda" }
+{ "_id" : ObjectId("61caeedc1f00566070983384"), "sid" : 3, "sname" : "devu", "scity" : "surat" }
+{ "_id" : ObjectId("61caeeea1f00566070983385"), "sid" : 4, "sname" : "nikhil", "scity" : "jaipur" }
+{ "_id" : ObjectId("61caeef71f00566070983386"), "sid" : 5, "sname" : "jaydeep", "scity" : "rajkot" }
+{ "_id" : ObjectId("61caef041f00566070983387"), "sid" : 6, "sname" : "nirmohi", "scity" : "delhi" }
+{ "_id" : ObjectId("61caef1a1f00566070983388"), "sid" : 7, "sname" : "bhavesh", "scity" : "dehradun" }
+{ "_id" : ObjectId("61caef2b1f00566070983389"), "sid" : 8, "sname" : "mango", "scity" : "jodhpur" }
+{ "_id" : ObjectId("61caef391f0056607098338a"), "sid" : 9, "sname" : "harishbhai", "scity" : "jothpur" }
+{ "_id" : ObjectId("61caef481f0056607098338b"), "sid" : 10, "sname" : "naranlalaji", "scity" : "udaipur" }
+> 
+
+
+_______________________________________________________________________________________________________________
+
+
+
