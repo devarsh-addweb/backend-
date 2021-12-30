@@ -1,0 +1,1570 @@
+addweb@LP-59:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("07d80e50-d2de-4771-a179-c376e141a100") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-12-29T10:05:21.005+0530 I STORAGE  [initandlisten] 
+2021-12-29T10:05:21.005+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-29T10:05:21.005+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] 
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] 
+> use addweb
+switched to db addweb
+> show collections
+admin
+category
+customer
+employee
+feedback
+register
+seller
+shop
+student
+sub_cat
+> db.seller.find()
+{ "_id" : ObjectId("61caeec01f00566070983382"), "sid" : 1, "sname" : "manish", "scity" : "amd" }
+{ "_id" : ObjectId("61caeece1f00566070983383"), "sid" : 2, "sname" : "devarh", "scity" : "baroda" }
+{ "_id" : ObjectId("61caeedc1f00566070983384"), "sid" : 3, "sname" : "devu", "scity" : "surat" }
+{ "_id" : ObjectId("61caeeea1f00566070983385"), "sid" : 4, "sname" : "nikhil", "scity" : "jaipur" }
+{ "_id" : ObjectId("61caeef71f00566070983386"), "sid" : 5, "sname" : "jaydeep", "scity" : "rajkot" }
+{ "_id" : ObjectId("61caef041f00566070983387"), "sid" : 6, "sname" : "nirmohi", "scity" : "delhi" }
+{ "_id" : ObjectId("61caef1a1f00566070983388"), "sid" : 7, "sname" : "bhavesh", "scity" : "dehradun" }
+{ "_id" : ObjectId("61caef2b1f00566070983389"), "sid" : 8, "sname" : "mango", "scity" : "jodhpur" }
+{ "_id" : ObjectId("61caef391f0056607098338a"), "sid" : 9, "sname" : "harishbhai", "scity" : "jothpur" }
+{ "_id" : ObjectId("61caef481f0056607098338b"), "sid" : 10, "sname" : "naranlalaji", "scity" : "udaipur" }
+> db.seller.find({sname:{$eq:manish}})
+2021-12-29T12:01:41.467+0530 E QUERY    [thread1] ReferenceError: manish is not defined :
+@(shell):1:24
+> db.seller.find({results:{$elemMatch:{$get:500,$lt:400}}})
+Error: error: {
+	"ok" : 0,
+	"errmsg" : "unknown operator: $get",
+	"code" : 2,
+	"codeName" : "BadValue"
+}
+> db.inventory.insertMany([
+...    { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+...    { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "A" },
+...    { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+...    { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+...    { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" }
+... ]);
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("61cc01b74116b2450dc86313"),
+		ObjectId("61cc01b74116b2450dc86314"),
+		ObjectId("61cc01b74116b2450dc86315"),
+		ObjectId("61cc01b74116b2450dc86316"),
+		ObjectId("61cc01b74116b2450dc86317")
+	]
+}
+> shoe collections
+2021-12-29T12:05:46.004+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:5
+> show collections
+admin
+category
+customer
+employee
+feedback
+inventory
+register
+seller
+shop
+student
+sub_cat
+> db.inventory.find()
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> select * from inventory
+2021-12-29T12:06:35.770+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:14
+> db.inventory.find({status:"D"})
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+> db.inventory.find({item:"paper"})
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+> db.inventory.find( { status: { $in: [ "A", "D" ] } } )
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find( { status: { $in: [ "A" ] } } )
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find({status:"a",qty:{$lt:30}})
+> db.inventory.find({status:"A",qty:{$lt:30}})
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find({status:"A",qty:{$gt:30}})
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find({$or:[{status:"A"},{qty:{$lt:30}}]})
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find({$or:[{status:"A"},{qty:{$gt:30}}]})
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find({status:"A", $or: [{qty:{$lt:50}},{item:/^p/}}]})
+2021-12-29T12:20:34.991+0530 E QUERY    [thread1] SyntaxError: missing ] after element list @(shell):1:63
+> db.inventory.find({status:"A", $or: [{qty:{$lt:50}},{item:/^p/}]})
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> 
+> db.inventory.find({status:"D", $or: [{qty:{$gt:100}},{item:/^d/}]})
+> db.inventory.find()
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find(item:"A")
+2021-12-29T12:30:24.491+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:22
+> db.inventory.find({},{"item":1});
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard" }
+> db.inventory.find({"item":1});
+> db.inventory.find({},{"item":1});
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard" }
+> db.inventory.find({},{"item":2});
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard" }
+> db.inventory.find({},{"item":2,"qty":2});
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25 }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50 }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100 }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75 }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45 }
+> show dbs
+addweb  0.001GB
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use addweb
+switched to db addweb
+> show collections
+admin
+category
+customer
+employee
+feedback
+inventory
+register
+seller
+shop
+student
+sub_cat
+> db.inventoey.find()
+> db.inventory.find()
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.find([{$group:{_qty:"$by_user",num_tutorial:{$sum:"$likes"}}}])
+Error: error: {
+	"ok" : 0,
+	"errmsg" : "Failed to parse: filter: [ { $group: { _qty: \"$by_user\", num_tutorial: { $sum: \"$likes\" } } } ]. 'filter' field must be of BSON type object.",
+	"code" : 9,
+	"codeName" : "FailedToParse"
+}
+> db.i.find([{$group:{_qty:"$by_user",num_tutorial:{$sum:"$likes"}}}])
+db.employee.aggregate([{$group:{_id:"$emp_name",emp_sal:{$sum:"$emp_sal"}}}])Error: error: {
+	"ok" : 0,
+	"errmsg" : "Failed to parse: filter: [ { $group: { _qty: \"$by_user\", num_tutorial: { $sum: \"$likes\" } } } ]. 'filter' field must be of BSON type object.",
+	"code" : 9,
+	"codeName" : "FailedToParse"
+}
+^[db.employee.aggregate([{$group:{_id:"$emp_name",emp_sal:{$sum:"$emp_sal"}}}])
+{ "_id" : null, "emp_sal" : 0 }
+> db.inventory.aggregate([{$group:{_id:"$emp_name",emp_sal:{$sum:"$emp_sal"}}}])
+{ "_id" : null, "emp_sal" : 0 }
+> db.inventory.find()
+{ "_id" : ObjectId("61cc01b74116b2450dc86313"), "item" : "journal", "qty" : 25, "size" : { "h" : 14, "w" : 21, "uom" : "cm" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86314"), "item" : "notebook", "qty" : 50, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "A" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86315"), "item" : "paper", "qty" : 100, "size" : { "h" : 8.5, "w" : 11, "uom" : "in" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86316"), "item" : "planner", "qty" : 75, "size" : { "h" : 22.85, "w" : 30, "uom" : "cm" }, "status" : "D" }
+{ "_id" : ObjectId("61cc01b74116b2450dc86317"), "item" : "postcard", "qty" : 45, "size" : { "h" : 10, "w" : 15.25, "uom" : "cm" }, "status" : "A" }
+> db.inventory.aggregate([{$group:{_qty:"$emp_name",item:{$sum:"$"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field '_qty' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-29T14:00:59.156+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field '_qty' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.inventory.aggregate([{$group:{_qty:"$emp_name",item:{$sum:"$"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field '_qty' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-29T14:01:02.799+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field '_qty' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> 
+
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("b29cb83f-e9cf-4018-a8b5-9ce9cd53d40a") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-12-29T10:05:21.005+0530 I STORAGE  [initandlisten] 
+2021-12-29T10:05:21.005+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-29T10:05:21.005+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] 
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-29T10:05:28.438+0530 I CONTROL  [initandlisten] 
+>  db.emp.insert({_id : 1,  firstName:"ank", salary : 1000 })
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({_id : 2,  firstName:"dvr", salary : 4000 })
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({_id : 3,  firstName:"dev", salary : 8000 })
+WriteResult({ "nInserted" : 1 })
+> db.employee.aggregate([{$group : {_id : "$firstName", salary_sum : {$sum : "$salary"}}}])
+>  db.emp.aggregate([{$group : {_id : "$firstName", salary_sum : {$sum : "$salary"}}}])
+{ "_id" : "dev", "salary_sum" : 8000 }
+{ "_id" : "dvr", "salary_sum" : 4000 }
+{ "_id" : "ank", "salary_sum" : 1000 }
+>  db.emp.aggregate([{$group : {_id : null, salary_sum : {$sum : "$salary"}}}])
+{ "_id" : null, "salary_sum" : 13000 }
+> db.emp.aggregate([{$group : {_id : 2, salary_sum : {$sum : "$salary"}}}])
+{ "_id" : 2, "salary_sum" : 13000 }
+> db.emp.aggregate([{$group : {_id : 4, salary_sum : {$sum : "$salary"}}}])
+{ "_id" : 4, "salary_sum" : 13000 }
+> db.emp.aggregate([{$group : {_id : 4, salary_sum : {$sum : "$salary"}}}])
+{ "_id" : 4, "salary_sum" : 13000 }
+> db.emp.aggregate([{$group : {)
+... db.emp.aggregate()
+... db.emp.aggregate([{$group : {_id : 4, salary_sum : {$sum : "$salary"}}}])
+... ^C
+
+> db.emp.aggregate([{$group : {_id : 4, salary_sum : {$sum_sum : "$salary"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$sum_sum'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-29T16:07:11.402+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$sum_sum'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.emp.aggregate([{$group : {_id : 4, salary_sum : {$sum_sum : "$salary"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$sum_sum'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-29T16:07:20.679+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$sum_sum'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> 
+> 
+> 
+> 
+> 
+> show collection
+2021-12-29T16:07:28.065+0530 E QUERY    [thread1] Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:997:11
+shellHelper@src/mongo/shell/utils.js:750:15
+@(shellhelp2):1:1
+> show collections
+emp
+> use addweb
+switched to db addweb
+> show collections
+admin
+category
+customer
+employee
+feedback
+inventory
+register
+seller
+shop
+student
+sub_cat
+> show dbs
+addweb  0.001GB
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+> use admin
+switched to db admin
+> show collections
+admin
+comments
+regi
+system.version
+> use config
+switched to db config
+> show collections
+system.sessions
+> use local
+switched to db local
+> show collections
+startup_log
+> use test
+switched to db test
+> show collections
+emp
+> use addweb
+switched to db addweb
+> show collections
+admin
+category
+customer
+employee
+feedback
+inventory
+register
+seller
+shop
+student
+sub_cat
+> 
+
+addweb@LP-59:~$ mongo
+MongoDB shell version v3.6.8
+connecting to: mongodb://127.0.0.1:27017
+Implicit session: session { "id" : UUID("0cab390c-5c49-4ed8-9a50-6d4f62e74476") }
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2021-12-30T10:06:27.472+0530 I STORAGE  [initandlisten] 
+2021-12-30T10:06:27.472+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2021-12-30T10:06:27.472+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2021-12-30T10:06:34.946+0530 I CONTROL  [initandlisten] 
+2021-12-30T10:06:34.946+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2021-12-30T10:06:34.946+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2021-12-30T10:06:34.946+0530 I CONTROL  [initandlisten] 
+> use addweb
+switched to db addweb
+> show collections
+admin
+category
+cust
+customer
+employee
+feedback
+inventory
+register
+seller
+shop
+student
+sub_cat
+> db.cust.find()
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "id" : 1, "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ db.cust.update({id:1},{$set:{'name':'dev'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+> 
+> { db.cust.insert({'id':15,'name':'yuvraj','city':'baroda','zip':877767','email':'yuvraj@gmail.com','salary':11000,'date':'21-3-21','depa':'php'})
+2021-12-30T10:21:56.148+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:70
+>  db.cust.insert({'id':15,'name':'yuvraj','city':'baroda','zip':877767','email':'yuvraj@gmail.com','salary':11000,'date':21-3-21,'depa':'php'})
+2021-12-30T10:22:32.344+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:68
+> db.cust.insert({'id':15,'name':'yuvraj','city':'baroda','zip':877767,'email':'yuvraj@gmail.com','salary':11000,'date':21-3-21,'depa':'php'})
+WriteResult({ "nInserted" : 1 })
+> db.cust.insert({'id':16,'name':'tapori','city':'baroda','zip':877544,'email':'tapori@gmail.com','salary':1000,'date':25-3-11,'depa':'.net'})
+WriteResult({ "nInserted" : 1 })
+> db.cust.insert({'id':17,'name':'kabir','city':'mumbai','zip':488494,'email':'kabir@gmail.com','salary':8000,'date':23-3-11,'depa':'ios'})
+WriteResult({ "nInserted" : 1 })
+> db.cust.insert({'id':18,'name':'naina','city':'parish','zip':988909,'email':'naina@gmail.com','salary':9000,'date':24-3-01,'depa':'java'})
+WriteResult({ "nInserted" : 1 })
+> db.cust.find()
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "id" : 1, "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc625bc91fe7f43f353fca"), "id" : 4, "name" : "akshay", "city" : "hmt", "zip" : "099990", "email" : "a@gmail.com" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "id" : 5, "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cc628ec91fe7f43f353fcc"), "id" : 6, "name" : "vitrag", "city" : "gandhinagar", "zip" : "456788", "email" : "vitrag@gmail.com" }
+{ "_id" : ObjectId("61cc62a0c91fe7f43f353fcd"), "id" : 7, "name" : "uv", "city" : "gandhinagar", "zip" : "456788", "email" : "uv@gmail.com" }
+{ "_id" : ObjectId("61cc62c4c91fe7f43f353fce"), "id" : 8, "name" : "gopi", "city" : "gandhinagar", "zip" : 456788, "email" : "gopi@gmail.com" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "id" : 9, "name" : "nilam", "city" : "vijaynagar", "zip" : 646464, "email" : "nilam@gmail.com" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "id" : 11, "name" : "devarsh", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com", "salary" : "8000" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "id" : 12, "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "id" : 13, "name" : "gopal", "city" : "gandhinagar", "zip" : "93923", "email" : "g@gmail.com", "salary" : "3000" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> db.cust.aggregate([{$group:{_id::$name",salary:{$sum:"$salary"}}}])
+2021-12-30T10:27:28.648+0530 E QUERY    [thread1] SyntaxError: expected expression, got ':' @(shell):1:32
+> db.cust.aggregate([{$group:{_id:"$name",salary:{$sum:"$salary"}}}])
+{ "_id" : "naina", "salary" : 9000 }
+{ "_id" : "kabir", "salary" : 8000 }
+{ "_id" : "tapori", "salary" : 1000 }
+{ "_id" : "yuvraj", "salary" : 11000 }
+{ "_id" : "menil", "salary" : 0 }
+{ "_id" : "vimal", "salary" : 0 }
+{ "_id" : "akshay", "salary" : 0 }
+{ "_id" : "rohit", "salary" : 0 }
+{ "_id" : "dev", "salary" : 0 }
+{ "_id" : "gopi", "salary" : 0 }
+{ "_id" : "nilam", "salary" : 0 }
+{ "_id" : "vitrag", "salary" : 0 }
+{ "_id" : "rajvi", "salary" : 0 }
+{ "_id" : "devarsh", "salary" : 0 }
+{ "_id" : "uv", "salary" : 0 }
+{ "_id" : "foram", "salary" : 0 }
+{ "_id" : "gopal", "salary" : 0 }
+> db.cust.aggregate([{$project:{name:1,total:{$multiply:["$salary",12] } } } ] )
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T10:28:57.652+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$project:{name:1,total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T10:30:24.815+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$project:{name:1,total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T10:30:45.298+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$project:{name:1,total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T10:31:38.165+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.find({id:"17",city:"parish"})
+> db.cust.find()
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "id" : 1, "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc625bc91fe7f43f353fca"), "id" : 4, "name" : "akshay", "city" : "hmt", "zip" : "099990", "email" : "a@gmail.com" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "id" : 5, "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cc628ec91fe7f43f353fcc"), "id" : 6, "name" : "vitrag", "city" : "gandhinagar", "zip" : "456788", "email" : "vitrag@gmail.com" }
+{ "_id" : ObjectId("61cc62a0c91fe7f43f353fcd"), "id" : 7, "name" : "uv", "city" : "gandhinagar", "zip" : "456788", "email" : "uv@gmail.com" }
+{ "_id" : ObjectId("61cc62c4c91fe7f43f353fce"), "id" : 8, "name" : "gopi", "city" : "gandhinagar", "zip" : 456788, "email" : "gopi@gmail.com" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "id" : 9, "name" : "nilam", "city" : "vijaynagar", "zip" : 646464, "email" : "nilam@gmail.com" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "id" : 11, "name" : "devarsh", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com", "salary" : "8000" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "id" : 12, "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "id" : 13, "name" : "gopal", "city" : "gandhinagar", "zip" : "93923", "email" : "g@gmail.com", "salary" : "3000" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> db.cust.find({id:"15",city:"baroda"})
+> db.cust.find({id:15,city:"baroda"})
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+> db.cust.find({$and:[{salary:{$gt:2000}},{name:{$exists:true}}]})
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> db.stud.find({salary:2000},{name:1})
+> db.stud.find({salary:1000},{name:1})
+> db.stud.find({salary:1000},{name:1})
+> db.stud.find({salary:1000},{name:1})
+> db.stud.find({salary:5000},{name:1})
+> db.stud.find({salary:5000}})
+2021-12-30T10:41:49.241+0530 E QUERY    [thread1] SyntaxError: missing ) after argument list @(shell):1:26
+> db.stud.find({salary:5000})
+> db.stud.find({salary:2000},{name:1,_id:0})
+> db.cust.find({$or:[{city:"baroda"},{name:"yuvraj"},{status:"pending"}]},{p_type:1})
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0") }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1") }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765") }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766") }
+> db.cust.find({$or:[{city:"baroda"},{name:"yuvraj"},{status:"pending"}]},{zip:1})
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "zip" : 646464 }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "zip" : 646464 }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "zip" : 877767 }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "zip" : 877544 }
+> db.cust.find({date:{$gt:"3"}})
+> db.cust.find({date:{$gt:3}})
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> date()
+2021-12-30T10:59:51.048+0530 E QUERY    [thread1] ReferenceError: date is not defined :
+@(shell):1:1
+> Date()
+Thu Dec 30 2021 11:00:06 GMT+0530 (IST)
+> db.getUser()
+2021-12-30T11:07:32.026+0530 E QUERY    [thread1] Error: User name for getUser shell helper must be a string :
+DB.prototype.getUser@src/mongo/shell/db.js:1658:1
+@(shell):1:1
+> db.cust.find({$or:[{id:1}{id:3},{id:5},{depa:"php"}]})
+2021-12-30T11:14:16.709+0530 E QUERY    [thread1] SyntaxError: missing ] after element list @(shell):1:25
+> db.cust.find({$or:[{id:1},{id:3},{id:5},{depa:"php"}]})
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "id" : 1, "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "id" : 5, "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+> db.cust.find({"name":/.a./})
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc625bc91fe7f43f353fca"), "id" : 4, "name" : "akshay", "city" : "hmt", "zip" : "099990", "email" : "a@gmail.com" }
+{ "_id" : ObjectId("61cc628ec91fe7f43f353fcc"), "id" : 6, "name" : "vitrag", "city" : "gandhinagar", "zip" : "456788", "email" : "vitrag@gmail.com" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "id" : 9, "name" : "nilam", "city" : "vijaynagar", "zip" : 646464, "email" : "nilam@gmail.com" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "id" : 11, "name" : "devarsh", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com", "salary" : "8000" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "id" : 12, "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "id" : 13, "name" : "gopal", "city" : "gandhinagar", "zip" : "93923", "email" : "g@gmail.com", "salary" : "3000" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> db.cust.find({"name":/...i./})
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "id" : 5, "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+> db.cust.find({"name":/.e./})
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "id" : 1, "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "id" : 11, "name" : "devarsh", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com", "salary" : "8000" }
+> db.cust.find({"name":/m./})
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+> 
+> 
+> db.cust.find({name:{$type:2},$where:"this.name.length==5"})
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "id" : 5, "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "id" : 9, "name" : "nilam", "city" : "vijaynagar", "zip" : 646464, "email" : "nilam@gmail.com" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "id" : 12, "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "id" : 13, "name" : "gopal", "city" : "gandhinagar", "zip" : "93923", "email" : "g@gmail.com", "salary" : "3000" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> 
+
+ db.cust.find({depa:{$nin:["it"]}})
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "id" : 1, "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "id" : 2, "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "id" : 3, "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc625bc91fe7f43f353fca"), "id" : 4, "name" : "akshay", "city" : "hmt", "zip" : "099990", "email" : "a@gmail.com" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "id" : 5, "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cc628ec91fe7f43f353fcc"), "id" : 6, "name" : "vitrag", "city" : "gandhinagar", "zip" : "456788", "email" : "vitrag@gmail.com" }
+{ "_id" : ObjectId("61cc62a0c91fe7f43f353fcd"), "id" : 7, "name" : "uv", "city" : "gandhinagar", "zip" : "456788", "email" : "uv@gmail.com" }
+{ "_id" : ObjectId("61cc62c4c91fe7f43f353fce"), "id" : 8, "name" : "gopi", "city" : "gandhinagar", "zip" : 456788, "email" : "gopi@gmail.com" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "id" : 9, "name" : "nilam", "city" : "vijaynagar", "zip" : 646464, "email" : "nilam@gmail.com" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "id" : 11, "name" : "devarsh", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com", "salary" : "8000" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "id" : 12, "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "id" : 13, "name" : "gopal", "city" : "gandhinagar", "zip" : "93923", "email" : "g@gmail.com", "salary" : "3000" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "id" : 18, "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+> db.cust.find({city:"baroda"})
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+> 
+> 
+> db.cust.find({city:"baroda"})
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "id" : 10, "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "id" : 15, "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "id" : 16, "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+> 
+> 
+> 
+> db.cust.aggregate([{$project:{total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T11:35:03.434+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$project:{total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T11:35:39.756+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> 
+> 
+> db.cust.aggregate([{$project:{total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T11:36:22.526+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$project:{total:{$multiply:["$salary",12]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T11:36:39.168+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$multiply only supports numeric types, not string",
+	"code" : 16555,
+	"codeName" : "Location16555"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+>  db.cust.aggregate([{$group:{_id:null,salary:{$max:"$salary"}}}])
+{ "_id" : null, "salary" : "8000" }
+> 
+> 
+> db.cust.aggregate([{$group:{_id:null,salary:{$max:"$salary"}}}])
+{ "_id" : null, "salary" : "8000" }
+> 
+> 
+> db.cust.aggregate([{$group:{_id:null,salary:{$min:"$salary"}}}])
+{ "_id" : null, "salary" : 1000 }
+> db.cust.aggregate([{$group:{_id:null,salary:{$avr:"$salary"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$avr'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T11:37:50.149+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$avr'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$group:{_id:null,salary:{$avg:"$salary"}}}])
+{ "_id" : null, "salary" : 7250 }
+> 
+> 
+> db.cust.aggregate([{$group:{_id:null,salary:{$avg:"$salary"}}}])
+{ "_id" : null, "salary" : 7250 }
+> 
+
+> 31 start
+2021-12-30T12:02:44.076+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:3
+> 
+> db.cust.aggregate([{$match:{position:".net"}},{$group:{id:"$name",Maximum:{$max:"$salary"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'id' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T12:05:10.778+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'id' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$match:{depa:".net"}},{$group:{id:"$name",Maximum:{$max:"$salary"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'id' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T12:05:39.837+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'id' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.aggregate([{$match:{depa:"php"}},{$group:{id:"$name",Maximum:{$max:"$salary"}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'id' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T12:09:21.665+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'id' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> db.cust.find({},{name:1,_id:0,salary:1}).sort({"salary":1})
+{ "name" : "dev" }
+{ "name" : "menil" }
+{ "name" : "vimal" }
+{ "name" : "akshay" }
+{ "name" : "rohit" }
+{ "name" : "vitrag" }
+{ "name" : "uv" }
+{ "name" : "gopi" }
+{ "name" : "nilam" }
+{ "name" : "rajvi" }
+{ "name" : "tapori", "salary" : 1000 }
+{ "name" : "kabir", "salary" : 8000 }
+{ "name" : "naina", "salary" : 9000 }
+{ "name" : "yuvraj", "salary" : 11000 }
+{ "name" : "rajvi", "salary" : "2000" }
+{ "name" : "gopal", "salary" : "3000" }
+{ "name" : "foram", "salary" : "4000" }
+{ "name" : "devarsh", "salary" : "8000" }
+> 
+> 
+> db.cust.find({},{name:1,_id:0,salary:1}).sort({"salary":1})
+{ "name" : "dev" }
+{ "name" : "menil" }
+{ "name" : "vimal" }
+{ "name" : "akshay" }
+{ "name" : "rohit" }
+{ "name" : "vitrag" }
+{ "name" : "uv" }
+{ "name" : "gopi" }
+{ "name" : "nilam" }
+{ "name" : "rajvi" }
+{ "name" : "tapori", "salary" : 1000 }
+{ "name" : "kabir", "salary" : 8000 }
+{ "name" : "naina", "salary" : 9000 }
+{ "name" : "yuvraj", "salary" : 11000 }
+{ "name" : "rajvi", "salary" : "2000" }
+{ "name" : "gopal", "salary" : "3000" }
+{ "name" : "foram", "salary" : "4000" }
+{ "name" : "devarsh", "salary" : "8000" }
+> 
+> 
+>  db.cust.find({},{name:1,_id:0,salary:1}).sort({"salary":-1})
+{ "name" : "devarsh", "salary" : "8000" }
+{ "name" : "foram", "salary" : "4000" }
+{ "name" : "gopal", "salary" : "3000" }
+{ "name" : "rajvi", "salary" : "2000" }
+{ "name" : "yuvraj", "salary" : 11000 }
+{ "name" : "naina", "salary" : 9000 }
+{ "name" : "kabir", "salary" : 8000 }
+{ "name" : "tapori", "salary" : 1000 }
+{ "name" : "dev" }
+{ "name" : "menil" }
+{ "name" : "vimal" }
+{ "name" : "akshay" }
+{ "name" : "rohit" }
+{ "name" : "vitrag" }
+{ "name" : "uv" }
+{ "name" : "gopi" }
+{ "name" : "nilam" }
+{ "name" : "rajvi" }
+> 
+> 
+> 
+> db.cust.find({},{name:1,_id:0,salary:1}).sort({"salary":1})
+{ "name" : "dev" }
+{ "name" : "menil" }
+{ "name" : "vimal" }
+{ "name" : "akshay" }
+{ "name" : "rohit" }
+{ "name" : "vitrag" }
+{ "name" : "uv" }
+{ "name" : "gopi" }
+{ "name" : "nilam" }
+{ "name" : "rajvi" }
+{ "name" : "tapori", "salary" : 1000 }
+{ "name" : "kabir", "salary" : 8000 }
+{ "name" : "naina", "salary" : 9000 }
+{ "name" : "yuvraj", "salary" : 11000 }
+{ "name" : "rajvi", "salary" : "2000" }
+{ "name" : "gopal", "salary" : "3000" }
+{ "name" : "foram", "salary" : "4000" }
+{ "name" : "devarsh", "salary" : "8000" }
+> 
+> 
+> db.cust.find({},{id:0}).sort({"name":1})
+{ "_id" : ObjectId("61cc625bc91fe7f43f353fca"), "name" : "akshay", "city" : "hmt", "zip" : "099990", "email" : "a@gmail.com" }
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "name" : "dev", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "name" : "devarsh", "city" : "khed", "zip" : "939348", "email" : "d@gmail.com", "salary" : "8000" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "name" : "gopal", "city" : "gandhinagar", "zip" : "93923", "email" : "g@gmail.com", "salary" : "3000" }
+{ "_id" : ObjectId("61cc62c4c91fe7f43f353fce"), "name" : "gopi", "city" : "gandhinagar", "zip" : 456788, "email" : "gopi@gmail.com" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "name" : "menil", "city" : "khed", "zip" : "939844", "email" : "m@gmail.com" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "name" : "naina", "city" : "parish", "zip" : 988909, "email" : "naina@gmail.com", "salary" : 9000, "date" : 20, "depa" : "java" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "name" : "nilam", "city" : "vijaynagar", "zip" : 646464, "email" : "nilam@gmail.com" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "name" : "rajvi", "city" : "baroda", "zip" : 646464, "email" : "rajvi@gmail.com", "salary" : "2000" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "name" : "rohit", "city" : "amd", "zip" : "377738", "email" : "r@gmail.com" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "name" : "tapori", "city" : "baroda", "zip" : 877544, "email" : "tapori@gmail.com", "salary" : 1000, "date" : 11, "depa" : ".net" }
+{ "_id" : ObjectId("61cc62a0c91fe7f43f353fcd"), "name" : "uv", "city" : "gandhinagar", "zip" : "456788", "email" : "uv@gmail.com" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "name" : "vimal", "city" : "idar", "zip" : "938383", "email" : "v@gmail.com" }
+{ "_id" : ObjectId("61cc628ec91fe7f43f353fcc"), "name" : "vitrag", "city" : "gandhinagar", "zip" : "456788", "email" : "vitrag@gmail.com" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "name" : "yuvraj", "city" : "baroda", "zip" : 877767, "email" : "yuvraj@gmail.com", "salary" : 11000, "date" : -3, "depa" : "php" }
+> 
+> 
+> 
+40 not atttemp
+
+42
+42
+> 
+> db.cust.aggregate([{$project:{'_id':0,name:{$toLower:"$name"}}}])
+{ "name" : "dev" }
+{ "name" : "menil" }
+{ "name" : "vimal" }
+{ "name" : "akshay" }
+{ "name" : "rohit" }
+{ "name" : "vitrag" }
+{ "name" : "uv" }
+{ "name" : "gopi" }
+{ "name" : "nilam" }
+{ "name" : "rajvi" }
+{ "name" : "rajvi" }
+{ "name" : "devarsh" }
+{ "name" : "foram" }
+{ "name" : "gopal" }
+{ "name" : "yuvraj" }
+{ "name" : "tapori" }
+{ "name" : "kabir" }
+{ "name" : "naina" }
+> db.cust.aggregate([{$project:{'_id':0,name:{$toUpper:"$name"}}}])
+{ "name" : "DEV" }
+{ "name" : "MENIL" }
+{ "name" : "VIMAL" }
+{ "name" : "AKSHAY" }
+{ "name" : "ROHIT" }
+{ "name" : "VITRAG" }
+{ "name" : "UV" }
+{ "name" : "GOPI" }
+{ "name" : "NILAM" }
+{ "name" : "RAJVI" }
+{ "name" : "RAJVI" }
+{ "name" : "DEVARSH" }
+{ "name" : "FORAM" }
+{ "name" : "GOPAL" }
+{ "name" : "YUVRAJ" }
+{ "name" : "TAPORI" }
+{ "name" : "KABIR" }
+{ "name" : "NAINA" }
+> 
+> Time()
+2021-12-30T12:54:09.445+0530 E QUERY    [thread1] ReferenceError: Time is not defined :
+@(shell):1:1
+> $currentDate
+2021-12-30T12:55:08.141+0530 E QUERY    [thread1] ReferenceError: $currentDate is not defined :
+@(shell):1:1
+> $currentDate()
+2021-12-30T12:55:18.890+0530 E QUERY    [thread1] ReferenceError: $currentDate is not defined :
+@(shell):1:1
+> { $currentDate: { <field1>: <typeSpecification1>, ... } }
+2021-12-30T12:55:32.346+0530 E QUERY    [thread1] SyntaxError: expected expression, got '<' @(shell):1:18
+> {$currentDate:}
+2021-12-30T12:56:19.326+0530 E QUERY    [thread1] SyntaxError: expected expression, got '}' @(shell):1:14
+> 
+> 44
+44
+> 
+> db.cust.aggregate([{ $project: {'_id':0, itemDescription: { $concat: [ "$name", " - ", "$mail_id" ] } } }])
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+> 
+> 
+> 45
+45
+> 
+> db.cust.aggregate([{ $project: {'_id':0, itemDescription: { $concat: [ "$name", " - ", "$location" ] } } }])
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+{ "itemDescription" : null }
+> 
+> 46
+46
+> db.cust.find({}).sort({"salary":-1}).skip(1).limit(1)
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "id" : 12, "name" : "foram", "city" : "amd", "zip" : "939348", "email" : "f@gmail.com", "salary" : "4000" }
+> 
+> 47
+47
+> { $dateFromString: { dateString: "2021-12-30T12:10:40.787" } }
+2021-12-30T12:10:40.787
+> 
+> 
+> 48
+48
+> 
+> db.cust.aggregate([{$project:{'_id':0,details:{$concat:["$email","-","$id"]}}}])
+assert: command failed: {
+	"ok" : 0,
+	"errmsg" : "$concat only supports strings, not double",
+	"code" : 16702,
+	"codeName" : "Location16702"
+} : aggregate failed
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+
+2021-12-30T13:15:36.256+0530 E QUERY    [thread1] Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$concat only supports strings, not double",
+	"code" : 16702,
+	"codeName" : "Location16702"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:16:14
+assert.commandWorked@src/mongo/shell/assert.js:403:5
+DB.prototype._runAggregate@src/mongo/shell/db.js:260:9
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1212:12
+@(shell):1:1
+> 48db.store.aggregate([{$project:{'_id':0,details:{$concat:["$mail_id","-","$pro_id"]}}}])
+2021-12-30T13:15:42.479+0530 E QUERY    [thread1] SyntaxError: identifier starts immediately after numeric literal @(shell):1:0
+> 
+48
+
+db.store.aggregate([{$project:{'_id':0,details:{$concat:["$mail_id","-","$pro_id"]}}}])
+2021-12-30T13:15:45.643+0530 E QUERY    [thread1] SyntaxError: identifier starts immediately after numeric literal @(shell):1:0
+> 
+> db.cust.aggregate([{$project:{'_id':0,details:{$concat:["$mail_id","-","$pro_id"]}}}])
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+{ "details" : null }
+
+
+> 49
+49
+> 
+>  db.cust.aggregate([{$project:{Name: { $substr: [ "$name",1,3]}}}])
+{ "_id" : ObjectId("61cc6217c91fe7f43f353fc7"), "Name" : "ev" }
+{ "_id" : ObjectId("61cc622cc91fe7f43f353fc8"), "Name" : "eni" }
+{ "_id" : ObjectId("61cc6243c91fe7f43f353fc9"), "Name" : "ima" }
+{ "_id" : ObjectId("61cc625bc91fe7f43f353fca"), "Name" : "ksh" }
+{ "_id" : ObjectId("61cc626fc91fe7f43f353fcb"), "Name" : "ohi" }
+{ "_id" : ObjectId("61cc628ec91fe7f43f353fcc"), "Name" : "itr" }
+{ "_id" : ObjectId("61cc62a0c91fe7f43f353fcd"), "Name" : "v" }
+{ "_id" : ObjectId("61cc62c4c91fe7f43f353fce"), "Name" : "opi" }
+{ "_id" : ObjectId("61cc62dec91fe7f43f353fcf"), "Name" : "ila" }
+{ "_id" : ObjectId("61cc62fec91fe7f43f353fd0"), "Name" : "ajv" }
+{ "_id" : ObjectId("61cc64dcc91fe7f43f353fd1"), "Name" : "ajv" }
+{ "_id" : ObjectId("61cc67c7418dfaaaaf864275"), "Name" : "eva" }
+{ "_id" : ObjectId("61cc67ed418dfaaaaf864276"), "Name" : "ora" }
+{ "_id" : ObjectId("61cc680b418dfaaaaf864277"), "Name" : "opa" }
+{ "_id" : ObjectId("61cd3b2320d502a27883a765"), "Name" : "uvr" }
+{ "_id" : ObjectId("61cd3b4f20d502a27883a766"), "Name" : "apo" }
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "Name" : "abi" }
+{ "_id" : ObjectId("61cd3bc520d502a27883a768"), "Name" : "ain" }
+> 
+> db.cust.aggregate([{$group : {_id : "$brand", price_sum : {$sum : "$price"}}}])
+{ "_id" : null, "price_sum" : 0 }
+> 
+> 50
+50
+> 
+> db.cust.aggregate([{$group : {_id : "$brand", price_sum : {$sum : "$price"}}}])
+{ "_id" : null, "price_sum" : 0 }
+> 
+> 
+> 51
+51
+> 
+> db.cust.copyTo("employee_new");
+WARNING: db.eval is deprecated
+18
+> db.cust.copyTo("name");
+WARNING: db.eval is deprecated
+18
+> 
+> 
+> 52
+52
+> 
+> 
+> {$year:{date: new Date("Jan 7,2003")}}
+ISODate("2003-01-06T18:30:00Z")
+> 
+> 
+> 53
+53
+> 
+> db.cust.find({salary:{$mod:[2,0]}}
+... 
+... 
+> 54
+54
+> 
+> db.cust.aggregate([ { $match: { salary : { $gt: 35000} } }, {$group : {_id : "$name", salary_sum : {$sum : "$salary"}}}])
+> db.cust.aggregate([ { $match: { salary : { $gt: 3000} } }, {$group : {_id : "$name", salary : {$sum : "$salary"}}}])
+{ "_id" : "naina", "salary" : 9000 }
+{ "_id" : "kabir", "salary" : 8000 }
+{ "_id" : "yuvraj", "salary" : 11000 }
+> 
+> 5
+5
+> 55
+55
+> 
+> 
+> db.cust.find( { name: { $regex: 'm.*'} } ).pretty();
+{
+	"_id" : ObjectId("61cc622cc91fe7f43f353fc8"),
+	"id" : 2,
+	"name" : "menil",
+	"city" : "khed",
+	"zip" : "939844",
+	"email" : "m@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc6243c91fe7f43f353fc9"),
+	"id" : 3,
+	"name" : "vimal",
+	"city" : "idar",
+	"zip" : "938383",
+	"email" : "v@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc62dec91fe7f43f353fcf"),
+	"id" : 9,
+	"name" : "nilam",
+	"city" : "vijaynagar",
+	"zip" : 646464,
+	"email" : "nilam@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc67ed418dfaaaaf864276"),
+	"id" : 12,
+	"name" : "foram",
+	"city" : "amd",
+	"zip" : "939348",
+	"email" : "f@gmail.com",
+	"salary" : "4000"
+}
+
+56
+
+
+> 
+> db.cust.find({salary:{ $gt: 30000, $lte: 50000}})
+> db.cust.find({salary:{ $gt: 30000, $lte: 500}})
+> db.cust.find({salary:{ $gt: 1000, $lte: 8000}})
+{ "_id" : ObjectId("61cd3b8120d502a27883a767"), "id" : 17, "name" : "kabir", "city" : "mumbai", "zip" : 488494, "email" : "kabir@gmail.com", "salary" : 8000, "date" : 9, "depa" : "ios" }
+> 
+> 
+> 57
+57
+> 
+> db.cust.find().count()
+18
+> 
+> 58
+58
+> 
+> db.cust.find({name : "gopal"}).forEach(printjson);
+{
+	"_id" : ObjectId("61cc680b418dfaaaaf864277"),
+	"id" : 13,
+	"name" : "gopal",
+	"city" : "gandhinagar",
+	"zip" : "93923",
+	"email" : "g@gmail.com",
+	"salary" : "3000"
+}
+> 
+> 
+> 59
+59
+> 
+> db.cust.find({date: {$gt:-2020, $lt:-2031}},{_id:0,name:1,date:1})
+> db.cust.find({date: {$gt:-2020, $lt:-2031}},{_id:15,name:1,date:21})
+> 
+> 
+> 60
+60
+> 
+> 
+> db.cust.find().pretty()
+{
+	"_id" : ObjectId("61cc6217c91fe7f43f353fc7"),
+	"id" : 1,
+	"name" : "dev",
+	"city" : "khed",
+	"zip" : "939348",
+	"email" : "d@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc622cc91fe7f43f353fc8"),
+	"id" : 2,
+	"name" : "menil",
+	"city" : "khed",
+	"zip" : "939844",
+	"email" : "m@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc6243c91fe7f43f353fc9"),
+	"id" : 3,
+	"name" : "vimal",
+	"city" : "idar",
+	"zip" : "938383",
+	"email" : "v@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc625bc91fe7f43f353fca"),
+	"id" : 4,
+	"name" : "akshay",
+	"city" : "hmt",
+	"zip" : "099990",
+	"email" : "a@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc626fc91fe7f43f353fcb"),
+	"id" : 5,
+	"name" : "rohit",
+	"city" : "amd",
+	"zip" : "377738",
+	"email" : "r@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc628ec91fe7f43f353fcc"),
+	"id" : 6,
+	"name" : "vitrag",
+	"city" : "gandhinagar",
+	"zip" : "456788",
+	"email" : "vitrag@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc62a0c91fe7f43f353fcd"),
+	"id" : 7,
+	"name" : "uv",
+	"city" : "gandhinagar",
+	"zip" : "456788",
+	"email" : "uv@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc62c4c91fe7f43f353fce"),
+	"id" : 8,
+	"name" : "gopi",
+	"city" : "gandhinagar",
+	"zip" : 456788,
+	"email" : "gopi@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc62dec91fe7f43f353fcf"),
+	"id" : 9,
+	"name" : "nilam",
+	"city" : "vijaynagar",
+	"zip" : 646464,
+	"email" : "nilam@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc62fec91fe7f43f353fd0"),
+	"id" : 10,
+	"name" : "rajvi",
+	"city" : "baroda",
+	"zip" : 646464,
+	"email" : "rajvi@gmail.com"
+}
+{
+	"_id" : ObjectId("61cc64dcc91fe7f43f353fd1"),
+	"id" : 10,
+	"name" : "rajvi",
+	"city" : "baroda",
+	"zip" : 646464,
+	"email" : "rajvi@gmail.com",
+	"salary" : "2000"
+}
+{
+	"_id" : ObjectId("61cc67c7418dfaaaaf864275"),
+	"id" : 11,
+	"name" : "devarsh",
+	"city" : "khed",
+	"zip" : "939348",
+	"email" : "d@gmail.com",
+	"salary" : "8000"
+}
+{
+	"_id" : ObjectId("61cc67ed418dfaaaaf864276"),
+	"id" : 12,
+	"name" : "foram",
+	"city" : "amd",
+	"zip" : "939348",
+	"email" : "f@gmail.com",
+	"salary" : "4000"
+}
+{
+	"_id" : ObjectId("61cc680b418dfaaaaf864277"),
+	"id" : 13,
+	"name" : "gopal",
+	"city" : "gandhinagar",
+	"zip" : "93923",
+	"email" : "g@gmail.com",
+	"salary" : "3000"
+}
+{
+	"_id" : ObjectId("61cd3b2320d502a27883a765"),
+	"id" : 15,
+	"name" : "yuvraj",
+	"city" : "baroda",
+	"zip" : 877767,
+	"email" : "yuvraj@gmail.com",
+	"salary" : 11000,
+	"date" : -3,
+	"depa" : "php"
+}
+{
+	"_id" : ObjectId("61cd3b4f20d502a27883a766"),
+	"id" : 16,
+	"name" : "tapori",
+	"city" : "baroda",
+	"zip" : 877544,
+	"email" : "tapori@gmail.com",
+	"salary" : 1000,
+	"date" : 11,
+	"depa" : ".net"
+}
+{
+	"_id" : ObjectId("61cd3b8120d502a27883a767"),
+	"id" : 17,
+	"name" : "kabir",
+	"city" : "mumbai",
+	"zip" : 488494,
+	"email" : "kabir@gmail.com",
+	"salary" : 8000,
+	"date" : 9,
+	"depa" : "ios"
+}
+{
+	"_id" : ObjectId("61cd3bc520d502a27883a768"),
+	"id" : 18,
+	"name" : "naina",
+	"city" : "parish",
+	"zip" : 988909,
+	"email" : "naina@gmail.com",
+	"salary" : 9000,
+	"date" : 20,
+	"depa" : "java"
+}
+> 
+
